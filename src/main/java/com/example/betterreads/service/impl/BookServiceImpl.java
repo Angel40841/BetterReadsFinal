@@ -27,6 +27,11 @@ public class BookServiceImpl implements BookService {
         bookRepository.save(map(book));
     }
 
+    @Override
+    public void removeBook(Long id) {
+        bookRepository.deleteById(id);
+    }
+
     private Book map(AddBookDTO bookData) {
         Book mappedBook = modelMapper.map(bookData, Book.class);
         return mappedBook;

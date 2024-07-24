@@ -14,22 +14,15 @@
 
             <ul class="align-items-lg-center">
                 <li class="btn btn-lg col-form-label-sm border-1 font-monospace">
-                    <div sec:authorize="hasRole('USER')">
-                        <div sec:authentication=”principal.authorities”>
+                    <div>
+                        <div>
                             <a th:href="@{/search}">Search</a>
                         </div>
                     </div>
                 </li>
                 <li class="btn btn-lg col-form-label-sm border-1 font-monospace">
-                    <div sec:authorize="hasRole('USER')">
+                    <div>
                         <a th:href="@{/add-book}">Add-a-book!</a>
-                    </div>
-                </li>
-                <li class="btn btn-lg col-form-label-sm border-1 font-monospace">
-                    <div sec:authorize="hasRole('ADMIN')">
-                        <div sec:authentication=”principal.authorities”>
-                            <a th:href="@{/admin}">Admin</a>
-                        </div>
                     </div>
                 </li>
                 <li class="btn btn-lg col-form-label-sm border-1 font-monospace">
