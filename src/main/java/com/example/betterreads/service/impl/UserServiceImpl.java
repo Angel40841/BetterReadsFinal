@@ -27,7 +27,7 @@ public class UserServiceImpl implements UserService {
         userRepository.save(map(registerData));
     }
 
-    private User map(UserRegisterDTO registerData) {
+    public User map(UserRegisterDTO registerData) {
         User mappedUser = modelMapper.map(registerData, User.class);
         mappedUser.setRegisteredOn(Instant.now());
         mappedUser.setPassword(encoder.encode(registerData.getPassword()));

@@ -1,0 +1,56 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{/fragments/head}">
+    <title>Login</title>
+</head>
+
+<body>
+<main class="p-5 align-content-center">
+    <h1 class="login font-monospace focus-ring">Login</h1>
+    <div class="d-flex justify-content-center">
+        <div class="row g-3 align-items-center">
+            <form th:action="@{/login}"
+                  method="POST"
+                  th:object="${loginData}">
+                <div>
+                    <div class="col-auto">
+                        <label for="inputUsername" class="col-form-label font-monospace">Username</label>
+                    </div>
+                    <div class="col-auto">
+                        <input
+                                th:field="*{username}"
+                                th:errorclass="is-invalid"
+                                type="text"
+                               name="username"
+                               required
+                               minlength="3" maxlength="20"
+                               id="inputUsername"
+                               class="form-control" aria-describedby="usernameHelpInline">
+                    </div>
+                </div>
+                <div>
+                    <div class="col-auto">
+                        <label for="inputPassword" class="col-form-label font-monospace">Password</label>
+                    </div>
+                    <div class="col-auto">
+                        <input
+                                th:field="*{password}"
+                                th:errorclass="is-invalid"
+                                type="password"
+                               name="password"
+                               required
+                               minlength="3" maxlength="20"
+                               id="inputPassword" class="form-control" aria-describedby="passwordHelpInline">
+                    </div>
+                </div>
+                <div class="d-flex justify-content-center mt-2">
+                    <button class="btn btn-blue-100 btn-block w-50 font-monospace" type="submit">Login</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>
+
+</body>
+
+</html>
