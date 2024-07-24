@@ -1,20 +1,23 @@
-package com.example.betterreads.model.entites;
+package com.example.betterreads.model.entites.user;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import com.example.betterreads.model.entites.BaseEntity;
+import jakarta.persistence.*;
 
 import java.time.Instant;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
-public class User extends BaseEntity{
+public class User extends BaseEntity {
     @Column(nullable = false, unique = true)
     private String username;
     @Column(nullable = false, unique = true)
     private String email;
     @Column(nullable = false)
-    private String fullName;
+    private String firstName;
+    @Column(nullable = false)
+    private String lastName;
     @Column(nullable = false)
     private String password;
     @Column(nullable = false)
@@ -26,9 +29,6 @@ public class User extends BaseEntity{
         return username;
     }
 
-    public String getFullName() {
-        return fullName;
-    }
 
     public Instant getRegisteredOn() {
         return registeredOn;
@@ -42,6 +42,16 @@ public class User extends BaseEntity{
         return email;
     }
 
+    @ManyToMany(
+            fetch = FetchType.EAGER
+    )
+    @JoinTable(
+            name = "users_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id")
+    )
+    private List<UserRoleEntity> roles = new ArrayList<>();
+
     public String getPassword() {
         return password;
     }
@@ -54,9 +64,6 @@ public class User extends BaseEntity{
         this.email = email;
     }
 
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
-    }
 
     public void setPassword(String password) {
         this.password = password;
@@ -68,5 +75,30 @@ public class User extends BaseEntity{
 
     public void setAdmin(boolean admin) {
         isAdmin = admin;
+    }
+
+    public List<UserRoleEntity> getRoles() {
+        return roles;
+    }
+
+    public User setRoles(List<UserRoleEntity> roles) {
+        this.roles = roles;
+        return this;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 }

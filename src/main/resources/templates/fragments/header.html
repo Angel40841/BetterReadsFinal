@@ -1,0 +1,52 @@
+<header th:fragment="header"
+        xmlns:sec="http://www.w3.org/1999/xhtml">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light monospace">
+        <div class="container">
+            <a class="navbar-brand" th:href="@{/home}">
+                <img src="/img/logo.png" alt="logo" width="64" height="64">
+            </a>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse monospace" id="navbarNav">
+
+            <ul class="align-items-lg-center">
+                <li class="btn btn-lg col-form-label-sm border-1 font-monospace">
+                    <div sec:authorize="hasRole('USER')">
+                        <div sec:authentication=”principal.authorities”>
+                            <a th:href="@{/search}">Search</a>
+                        </div>
+                    </div>
+                </li>
+                <li class="btn btn-lg col-form-label-sm border-1 font-monospace">
+                    <div sec:authorize="hasRole('USER')">
+                        <a th:href="@{/add-books}">Add-a-book!</a>
+                    </div>
+                </li>
+                <li class="btn btn-lg col-form-label-sm border-1 font-monospace">
+                    <div sec:authorize="hasRole('ADMIN')">
+                        <div sec:authentication=”principal.authorities”>
+                            <a th:href="@{/admin}">Admin</a>
+                        </div>
+                    </div>
+                </li>
+                <li class="btn btn-lg col-form-label-sm border-1 font-monospace">
+                    <a th:href="@{/login}">Login</a>
+                </li>
+                <li class="btn btn-lg col-form-label-sm border-1 font-monospace">
+                    <div sec:authorize="hasRole('USER')">
+                        <a th:href="@{/logout}">Logout</a>
+                    </div>
+                </li>
+                <li class="btn btn-lg col-form-label-sm border-1 font-monospace">
+                    <a th:href="@{/register}">Register</a>
+                </li>
+                <li class="btn btn-lg col-form-label-sm border-1 font-monospace">
+                    <a th:href="@{/about}">About</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>

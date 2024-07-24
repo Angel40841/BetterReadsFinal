@@ -24,23 +24,23 @@ public class UserRegisterDTO {
     public UserRegisterDTO() {
     }
 
-    public @NotBlank @Size(min = 3, max = 20) String getUsername() {
+    public String getUsername() {
         return username;
     }
 
-    public @NotBlank @Email String getEmail() {
+    public String getEmail() {
         return email;
     }
 
-    public @NotBlank @Size(min = 3, max = 20) String getFullName() {
+    public String getFullName() {
         return fullName;
     }
 
-    public @NotBlank @Size(min = 3, max = 20) String getPassword() {
+    public String getPassword() {
         return password;
     }
 
-    public @NotBlank @Size(min = 3, max = 20) String getConfirmPassword() {
+    public String getConfirmPassword() {
         return confirmPassword;
     }
 }
