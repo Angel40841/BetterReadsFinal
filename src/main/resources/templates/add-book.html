@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{/fragments/head}">
+    <title>BetterReads - Add Book</title>
+</head>
+<body>
+<header th:replace="~{/fragments/header}"></header>
+<main class="p-5 font-monospace">
+    <section id="add-book-form">
+        <h2>Add a New Book</h2>
+        <form
+                method="post"
+                th:action="@{/add-book}"
+        th:object="${bookData}">
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input
+                        th:field="*{title}"
+                        type="text"
+                        class="form-control"
+                        id="title"
+                        name="title" required>
+            </div>
+            <div class="form-group">
+                <label for="author">Author</label>
+                <input
+                        th:field="*{author}"
+                        type="text"
+                        class="form-control"
+                        id="author"
+                        name="author" required>
+            </div>
+            <div class="form-group">
+                <label for="releasedInYear">Year of release</label>
+                <textarea
+                        th:field="*{releasedYear}"
+                        class="form-control"
+                        id="releasedInYear"
+                        name="releasedInYear" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </section>
+</main>
+</body>
+</html>
