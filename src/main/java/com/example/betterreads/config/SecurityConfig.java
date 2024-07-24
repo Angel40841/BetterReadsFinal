@@ -43,11 +43,11 @@ public class SecurityConfig {
                                 // Where is our custom login form?
                                 .loginPage("/login")
                                 // what is the name of the username parameter in the Login POST request?
-                                .usernameParameter("email")
+                                .usernameParameter("username")
                                 // what is the name of the password parameter in the Login POST request?
                                 .passwordParameter("password")
                                 // What will happen if the login is successful
-                                .defaultSuccessUrl("/", true)
+                                .defaultSuccessUrl("/home", true)
                                 // What will happen if the login fails
                                 .failureForwardUrl("/users/login-error")
                 )
