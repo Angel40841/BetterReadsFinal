@@ -8,18 +8,18 @@
 <body>
 <header th:replace="~{/fragments/header}"></header>
 <main class="p-5 font-monospace">
-<!--    <section id="featured-books">-->
-<!--        <h2>Featured Books</h2>-->
-<!--        <ul>-->
-<!--            <li th:each="book : ${books}">-->
-<!--                <a th:href="@{/books/{id}(id=${book.id})}">-->
-<!--<img th:src="${book.getCoverImageUrl()}">-->
-<!--                    <span th:text="${book.title}">Book Title</span>-->
-<!--                </a>-->
-<!--                <span th:each="authorName : ${book.author}" th:text="${authorName}"></span>-->
-<!--            </li>-->
-<!--        </ul>-->
-<!--    </section>-->
+    <!--    <section id="featured-books">-->
+    <!--        <h2>Featured Books</h2>-->
+    <!--        <ul>-->
+    <!--            <li th:each="book : ${books}">-->
+    <!--                <a th:href="@{/books/{id}(id=${book.id})}">-->
+    <!--<img th:src="${book.getCoverImageUrl()}">-->
+    <!--                    <span th:text="${book.title}">Book Title</span>-->
+    <!--                </a>-->
+    <!--                <span th:each="authorName : ${book.author}" th:text="${authorName}"></span>-->
+    <!--            </li>-->
+    <!--        </ul>-->
+    <!--    </section>-->
 
     <section id="recent-books">
         <h2>Recently Added Books</h2>
@@ -35,26 +35,37 @@
     </section>
     <div class="mt-5">
         <h2>What's reading:</h2>
+
+        <!--        th:each="post:${postData}">-->
+        <!--            <input type="hidden" name="postId"/>-->
+
+
         <form action="#" method="post" th:action="@{/post/add}" th:if="${#authentication.principal}">
-            <input type="hidden" name="postId"/>
-            <div class="form-group">
-                <label for="post">Add a post</label>
-                <textarea
-                        th:field="*{postData.getPostContent()}"
-                        id="post"
-                        name="content"
-                        class="form-control"
-                        rows="2" required></textarea>
+            <div class="card mb-3" th:each="post : ${postData}">
+                <div class="card-body">
+                    <h5 class="card-title" th:text="${post.title}">Post Title</h5>
+                    <p class="card-text" th:text="${post.postContent}">Post content...</p>
+                    <div class="form-group">
+                        <label for="title"><strong>Add a post title!</strong></label>
+                        <textarea
+                                id="title"
+                                name="title"
+                                class="form-control"
+                                rows="1" required></textarea>
+                        <label for="postContent"><strong>Add a post!</strong></label>
+                        <textarea
+                                id="postContent"
+                                name="postContent"
+                                class="form-control"
+                                rows="2" required></textarea>
+                        <button type="submit"
+                                class="btn btn-blue-100 btn-block w-50 font-monospace justify-end align-end">
+                            Submit
+                        </button>
+                    </div>
+                </div>
             </div>
-            <button type="submit" class="btn btn-blue-100 btn-block w-50 font-monospace justify-end align-end">Submit</button>
         </form>
-        <div class="card mb-3" th:each="post : ${postData}">
-            <div class="card-body">
-                <h5 class="card-title" th:text="${post.title}">Post Title</h5>
-                <p class="card-text" th:text="${post.postContent}">Post content...</p>
-            </div>
-        </div>
-    </div>
     </div>
 </main>
 </body>
