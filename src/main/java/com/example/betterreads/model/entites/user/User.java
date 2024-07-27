@@ -1,6 +1,7 @@
 package com.example.betterreads.model.entites.user;
 
 import com.example.betterreads.model.entites.BaseEntity;
+import com.example.betterreads.model.entites.PostEntity;
 import jakarta.persistence.*;
 
 import java.time.Instant;
@@ -24,6 +25,8 @@ public class User extends BaseEntity {
     private Instant registeredOn;
     @Column(nullable = false, unique = true)
     private boolean isAdmin;
+    @OneToMany(mappedBy = "postAuthor")
+    private List<PostEntity> posts;
 
     public String getUsername() {
         return username;

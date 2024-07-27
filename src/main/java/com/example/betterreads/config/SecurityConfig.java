@@ -55,7 +55,7 @@ public class SecurityConfig {
                         logout ->
                                 logout
                                         // what is the logout URL?
-                                        .logoutUrl("/users/logout")
+                                        .logoutUrl("/logout")
                                         // Where to go after successful logout?
                                         .logoutSuccessUrl("/")
                                         // invalidate the session after logout.

@@ -12,8 +12,13 @@ public class AddBookDTO {
     private String author;
     @NotBlank
     private Integer releasedYear;
+    private String coverImageUrl;
 
     public AddBookDTO() {
+    }
+
+    public String getCoverImageUrl() {
+        return coverImageUrl;
     }
 
     public String getTitle() {

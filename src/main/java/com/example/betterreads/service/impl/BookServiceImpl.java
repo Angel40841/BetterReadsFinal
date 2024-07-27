@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import java.time.Instant;
+import java.util.List;
 
 @Service
 public class BookServiceImpl implements BookService {
@@ -40,6 +41,11 @@ public class BookServiceImpl implements BookService {
     public String searchBooks(String query) {
         String url = "https://www.googleapis.com/books/v1/volumes?q=" + query;
         return restTemplate.getForObject(url, String.class);
+    }
+
+    @Override
+    public List<Book> getAllBooks() {
+        return bookRepository.findAll();
     }
 
     private Book map(AddBookDTO bookData) {
