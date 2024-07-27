@@ -33,6 +33,7 @@ public class BetterReadsUserDetailsService implements UserDetailsService {
                 user.getEmail(),
                 user.getPassword(),
                 user.getRoles().stream().map(UserRoleEntity::getRole).map(BetterReadsUserDetailsService::mapRoles).toList(),
+                user.getId(),
                 user.getFirstName(),
                 user.getLastName()
         );

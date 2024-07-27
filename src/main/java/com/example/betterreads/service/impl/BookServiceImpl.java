@@ -50,6 +50,8 @@ public class BookServiceImpl implements BookService {
 
     private Book map(AddBookDTO bookData) {
         Book mappedBook = modelMapper.map(bookData, Book.class);
+        mappedBook.setCoverImageUrl(bookData.getCoverImageUrl());
+
         return mappedBook;
     }
 }

@@ -29,22 +29,26 @@
                     <img th:src="@{${book.coverImageUrl}}" alt="Cover Image"/>
                     <span th:text="${book.title}">Book Title</span>
                 </a>
-                <span th:each="authorName : ${book.author}" th:text="${authorName}"></span>
             </li>
         </ul>
     </section>
+    <h2>What's reading:</h2>
     <div class="mt-5">
-        <h2>What's reading:</h2>
-
-        <!--        th:each="post:${postData}">-->
-        <!--            <input type="hidden" name="postId"/>-->
-
-
-        <form action="#" method="post" th:action="@{/post/add}" th:if="${#authentication.principal}">
-            <div class="card mb-3" th:each="post : ${postData}">
+        <form action="#"
+              th:method="POST"
+              th:action="@{/post/add}"
+              th:object="${postData}">
+            <div class="card mb-3">
                 <div class="card-body">
-                    <h5 class="card-title" th:text="${post.title}">Post Title</h5>
-                    <p class="card-text" th:text="${post.postContent}">Post content...</p>
+                    <h5 class="card-title" th:each="post : ${viewAllPost}"
+                        th:field="*{title}"
+                        th:text="*{title}"></h5>
+                    <p class="card-author"
+                       th:field="*{postAuthor}"
+                       th:text="*{postAuthor}"></p>
+                    <p class="card-text"
+                       th:field="*{postContent}"
+                       th:text="*{postContent}"></p>
                     <div class="form-group">
                         <label for="title"><strong>Add a post title!</strong></label>
                         <textarea

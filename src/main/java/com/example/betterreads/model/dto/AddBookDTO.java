@@ -44,4 +44,8 @@ public class AddBookDTO {
     public void setReleasedYear(Integer releasedYear) {
         this.releasedYear = releasedYear;
     }
+
+    public void setCoverImageUrl(String coverImageUrl) {
+        this.coverImageUrl = coverImageUrl;
+    }
 }

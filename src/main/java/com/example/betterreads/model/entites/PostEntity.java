@@ -5,19 +5,19 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "posts")
-public class PostEntity extends BaseEntity{
-    @Column(name = "post_content", nullable = false)
+public class PostEntity extends BaseEntity {
+    @Column(name = "post_content", nullable = false, columnDefinition = "TEXT")
     private String postContent;
     @Column(nullable = false)
     private String title;
-    @ManyToOne
-    private User postAuthor;
+    @Column
+    private String postAuthor;
 
     public String getPostContent() {
         return postContent;
     }
 
-    public User getPostAuthor() {
+    public String getPostAuthor() {
         return postAuthor;
     }
 
@@ -33,7 +33,7 @@ public class PostEntity extends BaseEntity{
         this.title = title;
     }
 
-    public void setPostAuthor(User postAuthor) {
+    public void setPostAuthor(String postAuthor) {
         this.postAuthor = postAuthor;
     }
 }

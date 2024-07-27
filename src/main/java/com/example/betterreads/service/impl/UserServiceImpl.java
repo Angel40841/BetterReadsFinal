@@ -9,6 +9,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
+import java.util.Optional;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -36,5 +37,10 @@ public class UserServiceImpl implements UserService {
             mappedUser.setAdmin(true);
         }
         return mappedUser;
+    }
+    @Override
+    public Long userId(Long id){
+        Optional<User> byId = userRepository.findById(id);
+        return byId.get().getId();
     }
 }

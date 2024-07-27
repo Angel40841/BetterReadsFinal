@@ -38,6 +38,14 @@
                         id="releasedInYear"
                         name="releasedInYear" required></textarea>
             </div>
+            <div class="form-group">
+                <label for="coverImageUrl">Cover image URL</label>
+                <textarea
+                        th:field="*{coverImageUrl}"
+                        class="form-control"
+                        id="coverImageUrl"
+                        name="coverImageUrl"></textarea>
+            </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </section>

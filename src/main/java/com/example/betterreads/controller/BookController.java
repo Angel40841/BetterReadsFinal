@@ -35,10 +35,16 @@ public class BookController {
         return "redirect:/home";
     }
     @GetMapping("/books/{id}")
-    public String deleteBook(@PathVariable(value = "id") Long id, Model model){
-        bookRepository.deleteById(id);
-        model.addAttribute("books", bookRepository.findAll());
-        return "redirect:/home";
+    public String selectBook(@PathVariable(value = "id")Long id, Model model){
+        Optional<Book> byId = bookRepository.findById(id);
+        model.addAttribute("books", byId);
+
+        return "book-details";
     }
+//    @GetMapping("/books/{id}")
+//    public String deleteBook(@PathVariable(value = "id") Long id, Model model){
+//        bookRepository.deleteById(id);
+//        return "redirect:/home";
+//    }
 
 }

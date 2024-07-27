@@ -6,7 +6,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 
 public class BetterReadsUserDetails extends User {
-
+private final Long id;
     private final String firstName;
     private final String lastName;
 
@@ -14,10 +14,12 @@ public class BetterReadsUserDetails extends User {
             String username,
             String password,
             Collection<? extends GrantedAuthority> authorities,
+            Long id,
             String firstName,
             String lastName
     ) {
         super(username, password, authorities);
+        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
     }

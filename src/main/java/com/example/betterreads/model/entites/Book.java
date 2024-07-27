@@ -9,7 +9,7 @@ import jakarta.persistence.Table;
 public class Book extends BaseEntity{
     @Column(nullable = false)
     private String title;
-    @Column
+    @Column(name = "cover_image_url")
     private String coverImageUrl;
     @Column(nullable = false)
     private Integer releasedYear;
@@ -42,5 +42,9 @@ public class Book extends BaseEntity{
 
     public String getCoverImageUrl() {
         return coverImageUrl;
+    }
+
+    public void setCoverImageUrl(String coverImageUrl) {
+        this.coverImageUrl = coverImageUrl;
     }
 }
