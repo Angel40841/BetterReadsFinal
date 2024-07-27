@@ -3,12 +3,14 @@
         xmlns:th="https://www.thymeleaf.org">
 <head th:replace="~{/fragments/head}">
     <meta charset="UTF-8">
-    <title th:text="${book.title}"><title>
+    <title
+            th:each="book:${books}"
+            th:text="${book}"></title>
 </head>
 <body>
 <header th:replace="~{/fragments/header}"></header>
 <form >
-
+<h1>This is the book details page!</h1>
 </form>
 </body>
 </html>

@@ -42,7 +42,7 @@ public class PostController {
     public String doPost(AddPostDTO postData, Model model) {
         model.addAttribute("postData", postData);
         postService.addPost(postData);
-        return "home";
+        return "redirect:/home";
     }
 
 
