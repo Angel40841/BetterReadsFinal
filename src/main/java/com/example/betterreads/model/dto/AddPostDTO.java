@@ -14,6 +14,9 @@ public class AddPostDTO {
 
     private String postAuthor;
 
+    public AddPostDTO() {
+    }
+
     public String getPostContent() {
         return postContent;
     }

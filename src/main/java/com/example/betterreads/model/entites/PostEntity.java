@@ -1,6 +1,5 @@
 package com.example.betterreads.model.entites;
 
-import com.example.betterreads.model.entites.user.User;
 import jakarta.persistence.*;
 
 @Entity

@@ -4,6 +4,7 @@ import com.example.betterreads.model.dto.AddPostDTO;
 import com.example.betterreads.model.entites.PostEntity;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface PostService {
     void addPost(AddPostDTO post);
@@ -11,5 +12,7 @@ public interface PostService {
 
     PostEntity getPostById(Long id);
 
-    List<AddPostDTO> getAll();
+    List<PostEntity> getAllPosts();
+
+    Optional<PostEntity> findById(Long id);
 }

@@ -4,7 +4,6 @@ import com.example.betterreads.model.dto.AddPostDTO;
 import com.example.betterreads.model.entites.PostEntity;
 import com.example.betterreads.repositories.PostRepository;
 import com.example.betterreads.service.PostService;
-import jakarta.transaction.Transactional;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -41,23 +40,16 @@ public class PostServiceImpl implements PostService {
         Optional<PostEntity> byId = postRepository.findById(id);
         return byId.orElse(null);
     }
-    @Transactional
+
     @Override
-    public List<AddPostDTO> getAll() {
-        return postRepository.findAll()
-                .stream()
-                .map(this::mapToDto)
-                .toList();
+    public List<PostEntity> getAllPosts() {
+        return postRepository.findAll();
     }
 
-    private AddPostDTO mapToDto(PostEntity postEntity) {
-        AddPostDTO mappedDto = modelMapper.map(postEntity, AddPostDTO.class);
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        String user = auth.getName();
-        mappedDto.setPostAuthor(user);
-        return mappedDto;
+    @Override
+    public Optional<PostEntity> findById(Long id) {
+        return postRepository.findById(id);
     }
-
 
     private PostEntity map(AddPostDTO postData) {
         PostEntity mappedPost = modelMapper.map(postData, PostEntity.class);
