@@ -9,6 +9,8 @@ import com.example.betterreads.service.BookService;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 
 import java.time.Instant;
 
@@ -16,10 +18,12 @@ import java.time.Instant;
 public class BookServiceImpl implements BookService {
     private final BookRepository bookRepository;
     private final ModelMapper modelMapper;
+    private final RestTemplate restTemplate;
 
-    public BookServiceImpl(BookRepository bookRepository, ModelMapper modelMapper) {
+    public BookServiceImpl(BookRepository bookRepository, ModelMapper modelMapper, RestTemplate restTemplate) {
         this.bookRepository = bookRepository;
         this.modelMapper = modelMapper;
+        this.restTemplate = restTemplate;
     }
 
     @Override
@@ -30,6 +34,12 @@ public class BookServiceImpl implements BookService {
     @Override
     public void removeBook(Long id) {
         bookRepository.deleteById(id);
+    }
+
+    @Override
+    public String searchBooks(String query) {
+        String url = "https://www.googleapis.com/books/v1/volumes?q=" + query;
+        return restTemplate.getForObject(url, String.class);
     }
 
     private Book map(AddBookDTO bookData) {
