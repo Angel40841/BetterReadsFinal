@@ -7,11 +7,14 @@ import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import static org.springframework.security.config.Customizer.withDefaults;
 
 @Configuration
+@EnableWebSecurity
 public class SecurityConfig {
     @Bean
     public PasswordEncoder encoder() {
@@ -40,6 +43,7 @@ public class SecurityConfig {
                 )
                 .formLogin(formLogin ->
                         formLogin
+
                                 // Where is our custom login form?
                                 .loginPage("/login")
                                 // what is the name of the username parameter in the Login POST request?
@@ -51,11 +55,12 @@ public class SecurityConfig {
                                 // What will happen if the login fails
                                 .failureForwardUrl("/users/login-error")
                 )
+
                 .logout(
                         logout ->
                                 logout
                                         // what is the logout URL?
-                                        .logoutUrl("/logout")
+                                        .logoutUrl("/users/logout")
                                         // Where to go after successful logout?
                                         .logoutSuccessUrl("/")
                                         // invalidate the session after logout.

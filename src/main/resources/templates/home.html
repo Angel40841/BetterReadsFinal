@@ -17,12 +17,13 @@
 <main class="p-5 font-monospace">
     <section
             id="recent-books">
-        <h2>Recently Added Books</h2>
+        <h3>Recently Added Books</h3>
         <ul>
             <li class="d-inline navbar-nav mr-auto col-12 shadow-lg"
                 th:each="book : ${books}">
                 <a th:href="@{/books/{id}(id=${book.id})}">
-                    <img th:src="@{${book.coverImageUrl}}" alt="Cover Image"/>
+                    <img class="wh-100" style="width: 150px; height: 200px; background-color: rgba(0,0,255,0.1);"
+                         th:src="@{${book.coverImageUrl}}" alt="Cover Image"/>
                 </a>
             </li>
         </ul>
@@ -33,7 +34,7 @@
                   th:method="POST"
                   th:action="@{/post/add}"
                   th:object="${posts}">
-                <h2>What are we reading?</h2>
+                <h3>What are we reading?</h3>
                 <ul>
                     <li class="navbar-nav mr-auto">
                         <p class="d-block border border-dark-subtle rounded-3 font-monospace shadow-sm"
@@ -44,7 +45,7 @@
                     </li>
                 </ul>
                 <div class="form-group">
-                    <h2>Tell us what are you reading now!</h2>
+                    <h3>Tell us what are you reading now!</h3>
                     <label for="title"></label>
                     <textarea
 

@@ -1,9 +1,14 @@
 html{
     width: 100%;
+    font-family: "SF UI Display", serif;
 }
 
 .card-title{
     width: 100vh;
     height: 50vh;
 
+}
+
+#navbar-brand{
+    background-image: url("images/logo.png");
 }

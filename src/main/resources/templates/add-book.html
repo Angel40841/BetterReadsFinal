@@ -5,14 +5,15 @@
 </head>
 <body>
 <header th:replace="~{/fragments/header}"></header>
-<main class="p-5 font-monospace">
+<main class="p-5 align-content-center bg-blur">
+    <div class="d-flex justify-content-center ">
     <section id="add-book-form">
         <h2>Add a New Book</h2>
         <form
                 method="post"
                 th:action="@{/add-book}"
         th:object="${bookData}">
-            <div class="form-group">
+            <div class="form-group col-auto">
                 <label for="title">Title</label>
                 <input
                         th:field="*{title}"
@@ -21,7 +22,7 @@
                         id="title"
                         name="title" required>
             </div>
-            <div class="form-group">
+            <div class="form-group col-auto">
                 <label for="author">Author</label>
                 <input
                         th:field="*{author}"
@@ -30,7 +31,7 @@
                         id="author"
                         name="author" required>
             </div>
-            <div class="form-group">
+            <div class="form-group col-auto">
                 <label for="releasedInYear">Year of release</label>
                 <textarea
                         th:field="*{releasedYear}"
@@ -38,7 +39,7 @@
                         id="releasedInYear"
                         name="releasedInYear" required></textarea>
             </div>
-            <div class="form-group">
+            <div class="form-group col-auto">
                 <label for="coverImageUrl">Cover image URL</label>
                 <textarea
                         th:field="*{coverImageUrl}"
@@ -46,9 +47,13 @@
                         id="coverImageUrl"
                         name="coverImageUrl"></textarea>
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <div class="d-flex justify-content-center mt-4">
+            <button type="submit"
+                    class="btn btn btn-block font-monospace">Submit</button>
+            </div>
         </form>
     </section>
+    </div>
 </main>
 </body>
 </html>
