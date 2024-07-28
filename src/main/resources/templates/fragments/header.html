@@ -1,49 +1,88 @@
-<header th:fragment="header" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light monospace">
-        <a class="navbar-brand">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-        </a>
-        <div class="collapse navbar-collapse monospace" id="navbarNav">
+<!--<header th:fragment="header"-->
+<!--        xmlns:th="https://www.thymeleaf.org"-->
+<!--        xmlns:sec="http://www.thymeleaf.org/extras/spring-security">-->
+<!--    <nav class="navbar navbar-expand-lg navbar-light bg-light monospace">-->
+<!--        <a class="navbar-brand">-->
+<!--            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"-->
+<!--                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">-->
+<!--                <span class="navbar-toggler-icon"></span>-->
+<!--            </button>-->
+<!--        </a>-->
+<!--        <div class="collapse navbar-collapse monospace"-->
+<!--             id="navbarNav">-->
 
-            <ul class="align-items-lg-center">
-                <li class="btn btn-lg col-form-label-sm border-1 font-monospace">
-                    <div sec:authorize="isAuthenticated()">
-                        <a th:href="@{/search}">Search</a>
-                    </div>
-                </li>
-                <li class="btn btn-lg col-form-label-sm border-1 font-monospace">
-                    <div sec:authorize="isAuthenticated()">
-                        <a th:href="@{/add-book}">Add-a-book!</a>
-                    </div>
-                </li>
-                <li class="btn btn-lg col-form-label-sm border-1 font-monospace">
-                    <div sec:authorize="!isAuthenticated()">
-                        <a th:href="@{/login}">Login</a>
-                    </div>
-                </li>
-                <li class="btn btn-lg col-form-label-sm border-1 font-monospace">
-                    <div sec:authorize="isAuthenticated()">
-                        <a th:href="@{/logout}">Logout</a>
-                    </div>
-                </li>
-                <li class="btn btn-lg col-form-label-sm border-1 font-monospace">
-                    <div sec:authorize="!isAuthenticated()">
-                        <a th:href="@{/register}">Register</a>
-                    </div>
-                </li>
-                <li class="btn btn-lg col-form-label-sm border-1 font-monospace">
-                    <div sec:authorize="isAuthenticated()">
-                        <a th:href="@{/profile}">My profile</a>
-                    </div>
-                </li>
-                </li>
-                <li class="btn btn-lg col-form-label-sm border-1 font-monospace">
-                    <a th:href="@{/about}">About</a>
-                </li>
-            </ul>
+<!--            <ul class="align-items-lg-center">-->
+<!--                <li class="btn btn-lg col-form-label-sm border-1 font-monospace">-->
+<!--                    <div sec:authorize="isAuthenticated()">-->
+<!--                        <a th:href="@{/search}">Search</a>-->
+<!--                    </div>-->
+<!--                </li>-->
+<!--                <li class="btn btn-lg col-form-label-sm border-1 font-monospace">-->
+<!--                    <div sec:authorize="isAuthenticated()">-->
+<!--                        <a th:href="@{/add-book}">Add-a-book!</a>-->
+<!--                    </div>-->
+<!--                </li>-->
+<!--                <li class="btn btn-lg col-form-label-sm border-1 font-monospace">-->
+<!--                    <div sec:authorize="!isAuthenticated()">-->
+<!--                        <a th:href="@{/login}">Login</a>-->
+<!--                    </div>-->
+<!--                </li>-->
+<!--                <li class="btn btn-lg col-form-label-sm border-1 font-monospace">-->
+<!--                    <div sec:authorize="isAuthenticated()">-->
+<!--                        <a th:href="@{/logout}">Logout</a>-->
+<!--                    </div>-->
+<!--                </li>-->
+<!--                <li class="btn btn-lg col-form-label-sm border-1 font-monospace">-->
+<!--                    <div sec:authorize="!isAuthenticated()">-->
+<!--                        <a th:href="@{/register}">Register</a>-->
+<!--                    </div>-->
+<!--                </li>-->
+<!--                <li class="btn btn-lg col-form-label-sm border-1 font-monospace">-->
+<!--                    <div sec:authorize="isAuthenticated()">-->
+<!--                        <a th:href="@{/profile}">My profile</a>-->
+<!--                    </div>-->
+<!--                </li>-->
+<!--                <li class="btn btn-lg col-form-label-sm border-1 font-monospace">-->
+<!--                    <a th:href="@{/about}">About</a>-->
+<!--                </li>-->
+<!--            </ul>-->
+<!--        </div>-->
+<!--    </nav>-->
+<!--</header>-->
+
+<header th:fragment="header">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg main-nav px-0">
+                <a class="navbar-brand" th:href="@{/home}">
+                    <img src="/images/logo.png" alt="BetterReadsLogo">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainMenu" aria-controls="mainMenu" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="icon-bar icon-bar-1"></span>
+                    <span class="icon-bar icon-bar-2"></span>
+                    <span class="icon-bar icon-bar-3"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="mainMenu">
+                    <ul class="navbar-nav ml-auto text-uppercase f1">
+                        <li>
+                            <a th:href="@{/search}" class="active active-first">search</a>
+                        </li>
+                        <li>
+                            <a th:href="@{/add-book}">add-book</a>
+                        </li>
+                        <li>
+                            <a th:href="@{/login}">login</a>
+                        </li>
+                        <li>
+                            <a th:href="@{/register}">projects</a>
+                        </li>
+                        <li>
+                            <a th:href="@{logout}">logout</a>
+                        </li>
+                        <li>
+                            <a th:href="@{/about}">about me</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
         </div>
-    </nav>
 </header>
