@@ -1,8 +1,9 @@
 package com.example.betterreads.service;
 
 import com.example.betterreads.model.dto.UserRegisterDTO;
+import com.example.betterreads.model.entites.Book;
 
 public interface UserService {
     void register(UserRegisterDTO registerData);
-    Long userId(Long id);
+    void addBook(Book book);
 }

@@ -46,7 +46,7 @@ public class UserController {
     @PostMapping("/register")
     public String doRegister(UserRegisterDTO registerData) {
         userService.register(registerData);
-        return "redirect:/";
+        return "redirect:/login";
     }
     @GetMapping("/userId")
     @ResponseBody

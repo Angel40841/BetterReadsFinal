@@ -1,6 +1,7 @@
 package com.example.betterreads.model.dto;
 
 
+import com.example.betterreads.model.entites.user.User;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
@@ -12,7 +13,7 @@ public class AddPostDTO {
     @Size(min = 3)
     private String postContent;
 
-    private String postAuthor;
+    private User postAuthor;
 
     public AddPostDTO() {
     }
@@ -32,11 +33,11 @@ public class AddPostDTO {
         this.postContent = postContent;
     }
 
-    public String getPostAuthor() {
+    public User getPostAuthor() {
         return postAuthor;
     }
 
-    public void setPostAuthor(String postAuthor) {
+    public void setPostAuthor(User postAuthor) {
         this.postAuthor = postAuthor;
     }
 }

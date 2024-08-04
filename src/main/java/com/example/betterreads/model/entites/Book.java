@@ -15,9 +15,19 @@ public class Book extends BaseEntity{
     private Integer releasedYear;
     @Column(name = "author_name", nullable = false)
     private String author;
+    @Column(nullable = false)
+    private int rating;
 
     public String getTitle() {
         return title;
+    }
+
+    public int getRating() {
+        return rating;
+    }
+
+    public void setRating(int rating) {
+        this.rating = rating;
     }
 
     public Integer getReleasedYear() {

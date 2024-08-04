@@ -2,6 +2,7 @@ package com.example.betterreads.service.impl;
 
 import com.example.betterreads.model.dto.AddPostDTO;
 import com.example.betterreads.model.entites.PostEntity;
+import com.example.betterreads.model.entites.user.User;
 import com.example.betterreads.repositories.PostRepository;
 import com.example.betterreads.service.PostService;
 import org.modelmapper.ModelMapper;
@@ -54,8 +55,8 @@ public class PostServiceImpl implements PostService {
     private PostEntity map(AddPostDTO postData) {
         PostEntity mappedPost = modelMapper.map(postData, PostEntity.class);
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        String user = auth.getName();
-        mappedPost.setPostAuthor(user);
+
+
 
         return mappedPost;
     }

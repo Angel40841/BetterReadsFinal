@@ -1,12 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 
-.card-title{
-    width: 100vh;
-    height: 50vh;
-}
-
 body {
-    background: #c0ddf0 !important;
+    background: #799aba!important;
 }
 #recent-books{
    font-palette: light;

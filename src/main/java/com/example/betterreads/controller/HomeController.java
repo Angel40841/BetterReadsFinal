@@ -30,6 +30,11 @@ public class HomeController {
         return bookService.getAllBooks();
     }
 
+    @GetMapping("/")
+    public String index(){
+        return "index";
+    }
+
     @GetMapping("/home")
     public String home() {
         return "home";
