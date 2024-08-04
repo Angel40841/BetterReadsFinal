@@ -3,6 +3,7 @@ package com.example.betterreads.service.impl;
 import com.example.betterreads.model.dto.UserRegisterDTO;
 import com.example.betterreads.model.entites.Book;
 import com.example.betterreads.model.entites.user.User;
+import com.example.betterreads.model.entites.user.UserRoles;
 import com.example.betterreads.repositories.BookRepository;
 import com.example.betterreads.repositories.UserRepository;
 import com.example.betterreads.service.UserService;
@@ -20,7 +21,8 @@ public class UserServiceImpl implements UserService {
     private final PasswordEncoder encoder;
     private final BookRepository bookRepository;
 
-    public UserServiceImpl(UserRepository userRepository, ModelMapper modelMapper, PasswordEncoder encoder, BookRepository bookRepository) {
+    public UserServiceImpl(UserRepository userRepository, ModelMapper modelMapper, PasswordEncoder encoder,
+            BookRepository bookRepository) {
         this.userRepository = userRepository;
         this.modelMapper = modelMapper;
         this.encoder = encoder;
@@ -43,6 +45,9 @@ public class UserServiceImpl implements UserService {
 
         if (userRepository.count() == 0) {
             mappedUser.setAdmin(true);
+            mappedUser.setRole(UserRoles.ADMIN);
+        } else {
+            mappedUser.setRole(UserRoles.USER);
         }
         return mappedUser;
     }

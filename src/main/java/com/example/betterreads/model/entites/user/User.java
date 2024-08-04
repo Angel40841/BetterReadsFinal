@@ -68,6 +68,10 @@ public class User extends BaseEntity {
         return registeredOn;
     }
 
+    public void setRole(UserRoles role) {
+        this.role = role;
+    }
+
     public boolean isAdmin() {
         return isAdmin;
     }
