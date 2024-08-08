@@ -10,8 +10,7 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
                 integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
                 crossorigin="anonymous"></script>
-        <title>Title</title>
-
+        <title></title>
     </head>
 <body>
 <header th:fragment="site-header" xmlns:sec="http://www.w3.org/1999/xhtml">
@@ -20,7 +19,8 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
             <a class="navbar-brand" th:href="@{/home}">
                 <img src="/images/logo-192x192.png" width="64px" height="64px" alt="BetterReadsLogo">
             </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainMenu" aria-controls="mainMenu" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainMenu"
+                    aria-controls="mainMenu" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="icon-bar icon-bar-1"></span>
                 <span class="icon-bar icon-bar-2"></span>
                 <span class="icon-bar icon-bar-3"></span>
@@ -48,11 +48,10 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
                         </div>
                     </li>
                     <li>
-                        <div sec:authorize="isAuthenticated()">
-
-                            <a th:method="post"
-                                    th:href="@{/logout}">logout</a>
-                        </div>
+                        <form th:method="post"
+                              th:action="@{/users/logout}">
+                            <input class="btn btn-link" type="submit" value="Logout"/>
+                        </form>
                     </li>
                     <li>
                         <a th:href="@{/about}">about me</a>
