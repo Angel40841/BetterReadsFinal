@@ -33,11 +33,7 @@ public class BookController {
 
         return "redirect:/home";
     }
-//    @GetMapping("/books/{id}")
-//    public String deleteBook(@PathVariable(value = "id") Long id, Model model){
-//        bookRepository.deleteById(id);
-//        return "redirect:/home";
-//    }
+
 @GetMapping("/books/{id}")
 public String getBookDetails(@PathVariable("id") Long id, Model model) {
     Book book = bookRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid book Id:" + id));

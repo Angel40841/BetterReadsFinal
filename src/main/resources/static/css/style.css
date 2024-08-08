@@ -2,6 +2,7 @@
 
 body {
     background: #799aba!important;
+    background-image: url("/static/images/background.jpg");
 }
 #recent-books{
    font-palette: light;

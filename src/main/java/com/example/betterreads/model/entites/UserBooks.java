@@ -1,20 +1,17 @@
 package com.example.betterreads.model.entites;
 
 import com.example.betterreads.model.entites.user.User;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Table(name = "book_by_user_and_bookid")
-public class UserBooks extends BaseEntity {
+public class UserBooks {
 
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     @Column(name = "started_date")
     private LocalDate startedDate;
 
@@ -27,14 +24,37 @@ public class UserBooks extends BaseEntity {
     @Column(name = "rating")
     private int rating;
 
-    @ManyToMany
-    private List<User> users;
-    @ManyToMany
-    private List<Book> books;
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 
-    public UserBooks() {
-        this.books = new ArrayList<>();
-        this.users = new ArrayList<>();
+    @ManyToOne
+    @JoinColumn(name = "book_id", nullable = false)
+    private Book book;
+
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setStartedDate(LocalDate startedDate) {
+        this.startedDate = startedDate;
+    }
+
+    public void setCompletedDate(LocalDate completedDate) {
+        this.completedDate = completedDate;
+    }
+
+    public void setReadingStatus(String readingStatus) {
+        this.readingStatus = readingStatus;
+    }
+
+    public void setRating(int rating) {
+        this.rating = rating;
     }
 
     public int getRating() {
@@ -51,6 +71,22 @@ public class UserBooks extends BaseEntity {
 
     public LocalDate getStartedDate() {
         return startedDate;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public Book getBook() {
+        return book;
+    }
+
+    public void setBook(Book book) {
+        this.book = book;
+    }
+
+    public void setUser(User user) {
+
     }
 }
 
