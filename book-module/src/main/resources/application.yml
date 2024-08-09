@@ -1,0 +1,43 @@
+logging:
+  level:
+    blog: WARN
+    org: WARN
+    org.hibernate.SQL: DEBUG
+spring:
+  application:
+    name: BetterReads
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    password: 1234
+    url: jdbc:mysql://localhost:3306/betterReads?createDatabaseIfNotExist=true&allowPublicKeyRetrieval=true&useSSL=false&sessionVariables=sql_mode='NO_ENGINE_SUBSTITUTION'&jdbcCompliantTruncation=false
+    username: root
+  jpa:
+    defer-datasource-initialization: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+    open-in-view: on
+  security:
+    oauth2:
+      client:
+        registration:
+          github:
+            client-id: Ov23liX6zyoniJOGokCJ
+            client-secret: a0ddfe6c6bc5023b9e241f8e224e7a90033b630c
+          google:
+            client-id: 341533716540-3hmjhm5u4lnhukh65gdc3cbk57ccj83d.apps.googleusercontent.com
+            client-secret: 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
+          authorization-grant-types:
+            - authorization_code
+            - refresh_token
+          redirect-uris:
+            - http://127.0.0.1:8080/login/oauth2/code/articles-client-oidc
+            - http://127.0.0.1:8080/authorized
+          scopes:
+            - openid
+
+  sql:
+    init:
+      mode: always

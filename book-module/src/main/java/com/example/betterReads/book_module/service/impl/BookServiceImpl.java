@@ -1,15 +1,15 @@
-package com.example.betterreads.service.impl;
+package com.example.betterReads.book_module.service.impl;
 
-import com.example.betterreads.model.dto.AddBookDTO;
-import com.example.betterreads.model.entites.Book;
-import com.example.betterreads.repositories.BookRepository;
-import com.example.betterreads.service.BookService;
+import com.example.betterReads.book_module.model.dto.AddBookDTO;
+import com.example.betterReads.book_module.model.entity.Book;
+import com.example.betterReads.book_module.repository.BookRepository;
+import com.example.betterReads.book_module.service.BookService;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
-
 @Service
 public class BookServiceImpl implements BookService {
     private final BookRepository bookRepository;
@@ -28,7 +28,7 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public void removeBook(Long id) {
+    public void removeBook(String id) {
         bookRepository.deleteById(id);
     }
 
@@ -48,7 +48,7 @@ public class BookServiceImpl implements BookService {
 
     private Book map(AddBookDTO bookData) {
         Book mappedBook = modelMapper.map(bookData, Book.class);
-        mappedBook.setCoverImageUrl(bookData.getCoverImageUrl());
+        mappedBook.setThumbnail(bookData.thumbnail());
 
         return mappedBook;
     }

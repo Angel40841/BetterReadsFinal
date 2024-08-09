@@ -11,15 +11,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 @RequestMapping("/api/books")
 public class BookRestController {
-    private final BookService bookService;
 
     @Autowired
     public BookRestController(BookService bookService) {
-        this.bookService = bookService;
     }
-    @GetMapping("/search")
-    public ResponseEntity<String> searchBooks(@RequestParam String query) {
-        String response = bookService.searchBooks(query);
-        return ResponseEntity.ok(response);
-    }
+
 }
