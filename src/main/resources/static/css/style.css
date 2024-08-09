@@ -1,8 +1,13 @@
+
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 
 body {
-    background: #c7ddf6 !important;
-    background-image: url("/static/images/background.jpg");
+    background: #799aba!important;
+    background-image: url("static/images/background.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
 }
 #recent-books{
    font-palette: light;
@@ -200,5 +205,8 @@ body {
         background-color: #fff;
     }
 
-    /*header ends*/
+
+
+
+
 }

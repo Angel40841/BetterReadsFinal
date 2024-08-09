@@ -5,11 +5,14 @@ import com.example.betterreads.model.entites.user.User;
 import com.example.betterreads.model.entites.user.UserRoleEntity;
 import com.example.betterreads.model.entites.user.UserRoles;
 import com.example.betterreads.repositories.UserRepository;
+import com.example.betterreads.service.exception.ObjectNotFoundException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+
+import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
 
 public class BetterReadsUserDetailsService implements UserDetailsService {
     private final UserRepository userRepository;
@@ -24,7 +27,7 @@ public class BetterReadsUserDetailsService implements UserDetailsService {
                 findByUsername(username)
                 .map(BetterReadsUserDetailsService::map)
                 .orElseThrow(
-                        () -> new UsernameNotFoundException("User with username: " + username + " not found!"));
+                        () -> new ObjectNotFoundException("Username not found!", id));
     }
 
     private static UserDetails map(User user) {
