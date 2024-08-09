@@ -1,11 +1,28 @@
 <html lang="en"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head th:replace="layout :: site-head">
     <title>Register</title>
 </head>
 <body>
 <main class="p-5 align-content-center bg-blur my-register-div bg-body fa-image">
+    <header>
+        <ul class="navbar-nav mr-auto col-12 justify-content-between">
+        <li class="nav-item">
+            <form th:method="get">
+                <label class="text-white" for="lang" th:text="#{nav_bar_language}">Language</label>
+                <select
+                        id="lang"
+                        name="lang"
+                        onchange="this.form.submit()">
+                    <option value="en_US" th:selected="${#locale.toString()} == 'en_US'">English</option>
+                    <option value="bg_BG" th:selected="${#locale.toString()} == 'bg_BG'">Български</option>
+                </select>
+            </form>
+        </li>
+        </ul>
+    </header>
     <h1 class="register font-monospace focus-ring">Register</h1>
     <div class="d-flex justify-content-center ">
         <div class="row g-3 align-items-center">
@@ -126,13 +143,20 @@
                                aria-describedby="confirmPasswordHelpInline">
                         <small id="confirmPasswordError"
                                class="invalid-feedback is-invalid form-text bg-danger rounded">
-                            Password length must be between 3 and 20 characters and passwords should match.
                         </small>
                     </div>
                 </div>
 
                 <div class="d-flex justify-content-center mt-4">
                     <button class="btn btn btn-block w-50 font-monospace" type="submit">Register</button>
+                </div>
+                <div class="d-flex justify-content-center mt-2 font-monospace">
+                    or
+                    <div class="d-flex justify-content-center mt-2">
+                        <a th:href="@{/login}"
+                           sec:authorize="!isAuthenticated()"
+                           class="btn btn-blue-100 btn-block w-100 font-monospace">Login</a>
+                    </div>
                 </div>
             </form>
         </div>

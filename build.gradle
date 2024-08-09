@@ -25,7 +25,7 @@ dependencies {
 	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6'
 	implementation group: 'jakarta.validation', name: 'jakarta.validation-api'
 	implementation group: 'org.modelmapper', name: 'modelmapper', version: '3.2.0'
-
+	implementation 'org.springframework.boot:spring-boot-starter-oauth2-authorization-server:3.2.2'
 	runtimeOnly 'com.mysql:mysql-connector-j'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.security:spring-security-test'
