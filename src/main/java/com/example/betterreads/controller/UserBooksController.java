@@ -33,13 +33,12 @@ public class UserBooksController {
         Book book = bookRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid book Id:" + id));
         model.addAttribute("book", book);
         model.addAttribute("userBooks", new UserBooks());
-
         java.lang.String username = getCurrentUsername();
         userRepository.findByUsername(username).ifPresent(user -> model.addAttribute("loginId", user.getId()));
         return "book-details";
     }
     @PostMapping("/addUserBook")
-    public java.lang.String addUserBook(@ModelAttribute UserBooks userBook, @RequestParam Long bookId, @RequestParam Long userId) {
+    public String addUserBook(@ModelAttribute UserBooks userBook, @RequestParam Long bookId, @RequestParam Long userId) {
         Book book = bookRepository.findById(bookId).orElseThrow(() -> new IllegalArgumentException("Invalid book Id:" + bookId));
         User user = userRepository.findById(userId).orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + userId));
         userBook.setBook(book);

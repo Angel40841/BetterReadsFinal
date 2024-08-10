@@ -1,5 +1,6 @@
 package com.example.betterreads.controller;
 
+
 import com.example.betterreads.model.entites.Book;
 import com.example.betterreads.model.entites.PostEntity;
 import com.example.betterreads.service.BookService;
@@ -13,16 +14,9 @@ import java.util.List;
 @Controller
 public class HomeController {
     private final BookService bookService;
-    private final PostService postService;
 
-    public HomeController(BookService bookService, PostService postService) {
+    public HomeController(BookService bookService) {
         this.bookService = bookService;
-        this.postService = postService;
-    }
-
-    @ModelAttribute("posts")
-    public List<PostEntity> getAllPosts() {
-        return postService.getAllPosts();
     }
 
     @ModelAttribute("books")
@@ -31,7 +25,7 @@ public class HomeController {
     }
 
     @GetMapping("/")
-    public String index(){
+    public String index() {
         return "index";
     }
 

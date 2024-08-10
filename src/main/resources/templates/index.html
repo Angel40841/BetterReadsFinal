@@ -10,15 +10,15 @@
         <img src="/images/logo-192x192.png" width="64px" height="64px" alt="BetterReadsLogo">
 
     </header>
-    <section class=""
+    <section class="p-5 align-content-center"
             sec:authorize="!isAuthenticated()">
-    <h1 class="font-monospace">You are not logged in!</h1>
-    <h3 class="font-monospace">Please</h3>
-    <div class="btn btn-lg col-form-label-sm border-1 font-monospace">
+    <h1 class="font-monospace text-center">You are not logged in!</h1>
+    <h3 class="font-monospace text-center">Please</h3>
+    <div class="btn btn-sm col-form-label-sm border-1 font-monospace mr-auto col-12 justify-content-between">
         <a th:href="@{/login}">Login</a>
     </div>
-    <h3 class="font-monospace"> or </h3>
-    <div class="btn btn-lg col-form-label-sm border-1 font-monospace">
+    <h3 class="font-monospace text-center"> or </h3>
+    <div class="btn btn-sm col-form-label-sm border-1 font-monospace mr-auto col-12 justify-content-between">
         <a th:href="@{/register}">Register</a>
     </div>
     </section>

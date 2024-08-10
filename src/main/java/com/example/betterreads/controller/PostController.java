@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -26,24 +27,29 @@ public class PostController {
     }
 
     @GetMapping("/post")
-    public String post(){
+    public String post() {
         return "home";
     }
 
     @GetMapping("/post/{id}")
     public String showPost(@PathVariable(value = "id") Model model, Long id) {
         Optional<PostEntity> byId = postService.findById(id);
-        model.addAttribute("posts", byId);
+        model.addAttribute("postById", byId);
         return "home";
     }
 
 
-    @PostMapping("/post/add")
+    @PostMapping("/posts/add")
     public String doPost(AddPostDTO postData, Model model) {
         model.addAttribute("postData", postData);
         postService.addPost(postData);
         return "redirect:/home";
     }
 
+    @GetMapping("/posts/all")
+    public List<PostEntity> getPosts(Model model) {
+        model.addAttribute("allPosts");
+        return postService.getAllPosts();
+    }
 
 }

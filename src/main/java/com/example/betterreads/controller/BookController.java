@@ -11,8 +11,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.Optional;
-
 @Controller
 public class BookController {
     private final BookService bookService;
@@ -36,7 +34,6 @@ public class BookController {
     @PostMapping("/add-book")
     public String doAddBook(AddBookDTO bookData) {
         bookService.addBook(bookData);
-
         return "redirect:/home";
     }
 

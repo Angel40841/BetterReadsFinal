@@ -1,24 +1,23 @@
 package com.example.betterreads.model.dto;
 
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
-
-import javax.management.remote.rmi.RMIConnectionImpl;
 
 public class AddBookDTO {
     @NotBlank
     private String title;
     @NotBlank
-    private String author;
+    private String authors;
     @NotBlank
-    private Integer releasedYear;
-    private String coverImageUrl;
+    private Integer publishedDate;
+
+    private String description;
+    private String thumbnail;
 
     public AddBookDTO() {
     }
 
-    public String getCoverImageUrl() {
-        return coverImageUrl;
+    public String getThumbnail() {
+        return thumbnail;
     }
 
     public String getTitle() {
@@ -29,23 +28,27 @@ public class AddBookDTO {
         this.title = title;
     }
 
-    public String getAuthor() {
-        return author;
+    public String getAuthors() {
+        return authors;
     }
 
-    public void setAuthor(String author) {
-        this.author = author;
+    public void setAuthors(String author) {
+        this.authors = authors;
     }
 
-    public Integer getReleasedYear() {
-        return releasedYear;
+    public Integer getPublishedDate() {
+        return publishedDate;
     }
 
-    public void setReleasedYear(Integer releasedYear) {
-        this.releasedYear = releasedYear;
+    public void setPublishedDate(Integer publishedDate) {
+        this.publishedDate = publishedDate;
     }
 
-    public void setCoverImageUrl(String coverImageUrl) {
-        this.coverImageUrl = coverImageUrl;
+    public void setThumbnail(String thumbnail) {
+        this.thumbnail = thumbnail;
+    }
+
+    public String getDescription() {
+        return description;
     }
 }

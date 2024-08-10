@@ -35,7 +35,7 @@ public class User extends BaseEntity {
     private List<Book> userBooks;
     @OneToMany(mappedBy = "user")
     private Set<PostEntity> posts;
-    @OneToMany
+    @OneToMany(mappedBy = "user")
     private List<UserBooks> userBooksDetails;
 
     public User() {

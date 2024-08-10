@@ -14,9 +14,9 @@ public class GoogleBooksController {
     public GoogleBooksController(GoogleBooksService googleBooksService) {
         this.googleBooksService = googleBooksService;
     }
-
     @GetMapping("/api/books/search")
     public GoogleBookResponseDTO searchBooks(@RequestParam String query) {
         return googleBooksService.searchBooks(query);
     }
+   
 }

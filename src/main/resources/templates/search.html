@@ -8,7 +8,7 @@
 <header th:fragment="~{layout :: site-header}"></header>
 <h1 class="font-monospace">Search Books</h1>
 <h1>Search Results</h1>
-<form th:action="/search"
+<form th:action="@{/api/books/search}"
       method="get"
 >
     <label>
@@ -23,10 +23,9 @@
         <ul>
             <li th:each="book : ${results}">
                 <div>
-                    <h3 th:text="${.title}"></h3>
+                    <h3 th:text="${book.title}"></h3>
                     <p th:text="${book.description}"></p>
-                    <img th:src="${book.coverImageUrl}" alt="Book cover">
-                    <p>Genre: <span th:text="${book.genre}"></span></p>
+                    <img th:src="${book.thumbnail}" alt="Book cover">
                 </div>
             </li>
         </ul>

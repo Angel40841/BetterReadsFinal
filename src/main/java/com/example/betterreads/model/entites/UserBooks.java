@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "book_by_user_and_bookid")
+@Table(name = "book_by_user_and_book_id")
 public class UserBooks {
 
     @Id
@@ -19,7 +19,7 @@ public class UserBooks {
     private LocalDate completedDate;
 
     @Column(name = "reading_status")
-    private java.lang.String readingStatus;
+    private String readingStatus;
 
     @Column(name = "rating")
     private int rating;

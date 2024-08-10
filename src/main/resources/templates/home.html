@@ -11,43 +11,40 @@
 <main class="p-5 font-monospace">
     <section
             id="recent-books">
-        <h3>Recently Added Books</h3>
+        <h3 th:text="#{homepage.recent.book}">Recently Added Books</h3>
         <ul>
             <li class="d-inline navbar-nav mr-auto col-12 shadow-lg"
                 th:each="book : ${books}">
                 <a th:href="@{/books/{id}(id=${book.id})}">
                     <img class="wh-100" style="width: 150px; height: 200px; background-color: rgba(0,0,255,0.1);"
-                         th:src="@{${book.coverImageUrl}}" alt="Cover Image"/>
+                         th:src="@{${book.thumbnail}}" alt="Cover Image"/>
                 </a>
             </li>
         </ul>
     </section>
     <section id="post-section">
         <div class="mt-5">
-            <form action="#"
+            <form th:action="@{/post/all}"
                   th:method="POST"
-                  th:action="@{/post/add}"
                   th:object="${postData}">
-                <h3>What are we reading?</h3>
+                <h3 th:text="#{homepage.post.header}">What are we reading?</h3>
                 <ul>
-                    <li class="navbar-nav mr-auto">
-                        <p class="d-block border border-dark-subtle rounded-3 font-monospace shadow-sm"
-                           th:each="post : ${postData}"
-                           th:text="${post.postContent}"></p>
-                        <a th:href="@{/post/{id}(id=${posts})}">
+                    <li class="d-inline navbar-nav mr-auto col-12 shadow-lg"
+                        th:each="post : ${postData}">
+                    <a th:href="@{/posts/{id}(id=${post.id})}">
+                        th:text="${post.postContent}">
                         </a>
                     </li>
                 </ul>
-                <div class="form-group">
-                    <h3>Tell us what are you reading now!</h3>
-                    <label for="title"></label>
-                    <textarea
-
-                            id="title"
-                            name="title"
-                            class="form-control"
-                            rows="1" required
-                            placeholder="Place a title here!"></textarea>
+            </form>
+            <div class="form-group">
+                <h3 th:text="#{homepage.post.section}">Tell us what are you reading now!</h3>
+                <label for="title"></label>
+                <form class="d-block border border-dark-subtle rounded-3 font-monospace shadow-sm"
+                      th:action="@{/posts/add}"
+                      th:method="post"
+                      th:object="${postData}">
+                    <textarea id="title" name="title" class="form-control text-black" rows="1" required th:placeholder="#{post.title.placeholder}"></textarea>
                     <label for="postContent"></label>
                     <textarea
 
@@ -55,12 +52,12 @@
                             name="postContent"
                             class="form-control"
                             rows="2" required
-                            placeholder="What made impact on you?"></textarea>
+                            th:placeholder="#{post.content.placeholder}"></textarea>
                     <div class="d-flex justify-content-center mt-2">
-                        <button class="btn btn-blue-100 btn-block w-50 font-monospace" type="submit">Submit</button>
+                        <button class="btn btn-blue-100 btn-block w-50 font-monospace" type="submit" th:text="#{homepage.submit.button}">Submit</button>
                     </div>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
     </section>
 </main>

@@ -27,11 +27,7 @@ public class PostServiceImpl implements PostService {
 
     @Override
     public void addPost(AddPostDTO post) {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        if (!(authentication instanceof AnonymousAuthenticationToken)) {
-            String currentUserName = authentication.getName();
-            post.setPostAuthor(currentUserName);
-        }
+        post.setPostAuthor("Author");
         postRepository.save(map(post));
 
     }

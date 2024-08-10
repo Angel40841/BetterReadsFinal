@@ -14,16 +14,17 @@
             <div class="col-md-4">
                 <a th:href="@{/books/{id}(id=${book.id})}">
                     <img class="wh-100" style="width: 350px; height: 500px; background-color: rgba(0,0,255,0.1);"
-                         th:src="@{${book.coverImageUrl}}" alt="Cover Image"/>
+                         th:src="@{${book.thumbnail}}" alt="Cover Image"/>
                 </a>
             </div>
             <div class="col-md-8 font-monospace">
                 <div class="card-body">
                     <h4 class="card-title display-4 font-monospace" th:text="${book.title}">Name</h4>
-                    <p class="card-text display-6 font-monospace" th:text="${book.author}">Author name</p>
+                    <p class="card-text display-6 font-monospace" th:text="${book.authors}">Author name</p>
                     <p class="card-text font-monospace">Published Date: <small class=" font-monospace"
-                                                                               th:text="${book.releasedYear}"></small>
-                    </p>
+                                                                               th:text="${book.publishedDate}"></small>
+                    <p class="card-text font-monospace" th:text="${book.description}"> Description</p>
+
                     <form th:if="${loginId}" th:action="@{/addUserBook}" method="POST">
                         <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
                         <input type="hidden" name="bookId" th:value="${book.id}" />

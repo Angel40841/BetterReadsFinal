@@ -1,35 +1,33 @@
 package com.example.betterreads.model.dto;
 
-
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
 public class AddPostDTO {
     @NotBlank
     @Size(min = 3)
-    private java.lang.String title;
+    private String title;
     @NotBlank
     @Size(min = 3)
-    private java.lang.String postContent;
-    @NotBlank
+    private String postContent;
     private String postAuthor;
 
     public AddPostDTO() {
     }
 
-    public java.lang.String getPostContent() {
+    public String getPostContent() {
         return postContent;
     }
 
-    public java.lang.String getTitle() {
+    public String getTitle() {
         return title;
     }
 
-    public void setTitle(@NotBlank @Size(min = 3) java.lang.String title) {
+    public void setTitle(String title) {
         this.title = title;
     }
 
-    public void setPostContent(java.lang.String postContent) {
+    public void setPostContent(String postContent) {
         this.postContent = postContent;
     }
 

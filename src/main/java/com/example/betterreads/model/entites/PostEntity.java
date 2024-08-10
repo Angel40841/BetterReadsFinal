@@ -12,7 +12,7 @@ public class PostEntity extends BaseEntity {
     private java.lang.String title;
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
-    private User postAuthor;
+    private User user;
 
 
     public PostEntity() {
@@ -23,7 +23,7 @@ public class PostEntity extends BaseEntity {
     }
 
     public User getPostAuthor() {
-        return postAuthor;
+        return user;
     }
 
     public java.lang.String getTitle() {
@@ -39,6 +39,6 @@ public class PostEntity extends BaseEntity {
     }
 
     public void setUser(User user) {
-        this.postAuthor = user;
+        this.user = user;
     }
 }

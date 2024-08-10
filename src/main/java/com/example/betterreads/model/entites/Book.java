@@ -2,59 +2,69 @@ package com.example.betterreads.model.entites;
 
 import jakarta.persistence.*;
 
-import java.util.Set;
-
 @Entity
-@Table(name = "books")
+@Table(name = "books_main")
 public class Book extends BaseEntity{
-    @Column(nullable = false)
+
+    @Column
     private String title;
-    @Column(name = "cover_image_url")
-    private String coverImageUrl;
-    @Column(nullable = false)
-    private Integer releasedYear;
-    @Column(name = "author_name", nullable = false)
-    private String author;
-    @Column(nullable = false)
-    private int rating;
+    @Column
+    private String authors;
+    @Column
+    private String publishedDate;
+    @Column(columnDefinition = "TEXT")
+    private String description;
+    @Column
+    private Integer pageCount;
+    @Column
+    private String thumbnail;
+
 
     public String getTitle() {
         return title;
-    }
-
-    public int getRating() {
-        return rating;
-    }
-
-    public void setRating(int rating) {
-        this.rating = rating;
-    }
-
-    public Integer getReleasedYear() {
-        return releasedYear;
-    }
-
-    public String getAuthor() {
-        return author;
     }
 
     public void setTitle(String title) {
         this.title = title;
     }
 
-    public void setReleasedYear(Integer releasedYear) {
-        this.releasedYear = releasedYear;
+    public String getAuthors() {
+        return authors;
     }
 
-    public void setAuthor(String authorName) {
-        this.author = authorName;
+    public void setAuthors(String authors) {
+        this.authors = authors;
     }
 
-    public String getCoverImageUrl() {
-        return coverImageUrl;
+    public String getPublishedDate() {
+        return publishedDate;
     }
 
-    public void setCoverImageUrl(String coverImageUrl) {
-        this.coverImageUrl = coverImageUrl;
+    public void setPublishedDate(String publishedDate) {
+        this.publishedDate = publishedDate;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Integer getPageCount() {
+        return pageCount;
+    }
+
+    public void setPageCount(Integer pageCount) {
+        this.pageCount = pageCount;
+    }
+
+    public String getThumbnail() {
+        return thumbnail;
+    }
+
+    public void setThumbnail(String thumbnail) {
+        this.thumbnail = thumbnail;
     }
 }

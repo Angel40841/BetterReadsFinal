@@ -25,7 +25,7 @@
             <div class="form-group col-auto">
                 <label for="author">Author</label>
                 <input
-                        th:field="*{author}"
+                        th:field="*{authors}"
                         type="text"
                         class="form-control"
                         id="author"
@@ -34,7 +34,7 @@
             <div class="form-group col-auto">
                 <label for="releasedInYear">Year of release</label>
                 <textarea
-                        th:field="*{releasedYear}"
+                        th:field="*{publishedDate}"
                         class="form-control"
                         id="releasedInYear"
                         name="releasedInYear" required></textarea>
@@ -42,7 +42,7 @@
             <div class="form-group col-auto">
                 <label for="coverImageUrl">Cover image URL</label>
                 <textarea
-                        th:field="*{coverImageUrl}"
+                        th:field="*{thumbnail}"
                         class="form-control"
                         id="coverImageUrl"
                         name="coverImageUrl"></textarea>
