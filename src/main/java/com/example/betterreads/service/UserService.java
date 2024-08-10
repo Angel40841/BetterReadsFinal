@@ -5,5 +5,8 @@ import com.example.betterreads.model.entites.Book;
 
 public interface UserService {
     void register(UserRegisterDTO registerData);
-    void addBook(Book book);
+
+    void delete(Long id);
+
+
 }

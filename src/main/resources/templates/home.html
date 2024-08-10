@@ -27,12 +27,12 @@
             <form action="#"
                   th:method="POST"
                   th:action="@{/post/add}"
-                  th:object="${posts}">
+                  th:object="${postData}">
                 <h3>What are we reading?</h3>
                 <ul>
                     <li class="navbar-nav mr-auto">
                         <p class="d-block border border-dark-subtle rounded-3 font-monospace shadow-sm"
-                           th:each="post : ${posts}"
+                           th:each="post : ${postData}"
                            th:text="${post.postContent}"></p>
                         <a th:href="@{/post/{id}(id=${posts})}">
                         </a>

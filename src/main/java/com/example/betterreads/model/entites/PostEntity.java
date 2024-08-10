@@ -3,20 +3,16 @@ package com.example.betterreads.model.entites;
 import com.example.betterreads.model.entites.user.User;
 import jakarta.persistence.*;
 
-import java.util.Collection;
-import java.util.List;
-import java.util.Set;
-
 @Entity
 @Table(name = "posts")
 public class PostEntity extends BaseEntity {
     @Column(name = "post_content", nullable = false, columnDefinition = "TEXT")
-    private String postContent;
+    private java.lang.String postContent;
     @Column(nullable = false)
-    private String title;
+    private java.lang.String title;
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
-    private User user;
+    private User postAuthor;
 
 
     public PostEntity() {
@@ -27,10 +23,10 @@ public class PostEntity extends BaseEntity {
     }
 
     public User getPostAuthor() {
-        return user;
+        return postAuthor;
     }
 
-    public String getTitle() {
+    public java.lang.String getTitle() {
         return title;
     }
 
@@ -43,6 +39,6 @@ public class PostEntity extends BaseEntity {
     }
 
     public void setUser(User user) {
-        this.user = user;
+        this.postAuthor = user;
     }
 }

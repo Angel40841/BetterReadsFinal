@@ -22,7 +22,7 @@ public class BetterReadsUserDetailsService implements UserDetailsService {
     }
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+    public UserDetails loadUserByUsername(java.lang.String username) throws UsernameNotFoundException {
         return userRepository.
                 findByUsername(username)
                 .map(BetterReadsUserDetailsService::map)

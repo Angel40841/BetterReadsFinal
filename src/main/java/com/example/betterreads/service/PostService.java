@@ -2,6 +2,7 @@ package com.example.betterreads.service;
 
 import com.example.betterreads.model.dto.AddPostDTO;
 import com.example.betterreads.model.entites.PostEntity;
+import org.springframework.ui.Model;
 
 import java.util.List;
 import java.util.Optional;

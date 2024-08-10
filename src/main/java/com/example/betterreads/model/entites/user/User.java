@@ -60,7 +60,7 @@ public class User extends BaseEntity {
 
     private List<UserRoleEntity> roles = new ArrayList<>();
 
-    public String getUsername() {
+    public java.lang.String getUsername() {
         return username;
     }
 
@@ -76,24 +76,24 @@ public class User extends BaseEntity {
         return isAdmin;
     }
 
-    public String getEmail() {
+    public java.lang.String getEmail() {
         return email;
     }
 
 
-    public String getPassword() {
+    public java.lang.String getPassword() {
         return password;
     }
 
-    public void setUsername(String username) {
+    public void setUsername(java.lang.String username) {
         this.username = username;
     }
 
-    public void setEmail(String email) {
+    public void setEmail(java.lang.String email) {
         this.email = email;
     }
 
-    public void setPassword(String password) {
+    public void setPassword(java.lang.String password) {
         this.password = password;
     }
 
@@ -114,19 +114,19 @@ public class User extends BaseEntity {
         return this;
     }
 
-    public String getFirstName() {
+    public java.lang.String getFirstName() {
         return firstName;
     }
 
-    public void setFirstName(String firstName) {
+    public void setFirstName(java.lang.String firstName) {
         this.firstName = firstName;
     }
 
-    public String getLastName() {
+    public java.lang.String getLastName() {
         return lastName;
     }
 
-    public void setLastName(String lastName) {
+    public void setLastName(java.lang.String lastName) {
         this.lastName = lastName;
     }
 }

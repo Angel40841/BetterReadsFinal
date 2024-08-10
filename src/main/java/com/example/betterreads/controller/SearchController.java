@@ -20,8 +20,7 @@ public class SearchController {
     @GetMapping("/search")
     public String search(@RequestParam String query, Model model) {
         List<Book> results = null;
-        SearchResponse
-        return
+        return "search";
     }
     @GetMapping("/books/all")
     public String allBooks(){

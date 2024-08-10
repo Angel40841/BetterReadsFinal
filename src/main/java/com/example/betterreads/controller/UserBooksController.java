@@ -12,8 +12,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.lang.String;
 import java.time.LocalDate;
-import java.util.Optional;
 
 @Controller
 public class UserBooksController {
@@ -34,12 +34,12 @@ public class UserBooksController {
         model.addAttribute("book", book);
         model.addAttribute("userBooks", new UserBooks());
 
-        String username = getCurrentUsername();
+        java.lang.String username = getCurrentUsername();
         userRepository.findByUsername(username).ifPresent(user -> model.addAttribute("loginId", user.getId()));
         return "book-details";
     }
     @PostMapping("/addUserBook")
-    public String addUserBook(@ModelAttribute UserBooks userBook, @RequestParam Long bookId, @RequestParam Long userId) {
+    public java.lang.String addUserBook(@ModelAttribute UserBooks userBook, @RequestParam Long bookId, @RequestParam Long userId) {
         Book book = bookRepository.findById(bookId).orElseThrow(() -> new IllegalArgumentException("Invalid book Id:" + bookId));
         User user = userRepository.findById(userId).orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + userId));
         userBook.setBook(book);
@@ -49,7 +49,7 @@ public class UserBooksController {
         return "redirect:/books/" + bookId;
     }
 
-    private String getCurrentUsername() {
+    private java.lang.String getCurrentUsername() {
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         if (principal instanceof UserDetails) {
             return ((UserDetails) principal).getUsername();

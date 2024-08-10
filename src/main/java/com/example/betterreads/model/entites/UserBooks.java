@@ -19,7 +19,7 @@ public class UserBooks {
     private LocalDate completedDate;
 
     @Column(name = "reading_status")
-    private String readingStatus;
+    private java.lang.String readingStatus;
 
     @Column(name = "rating")
     private int rating;
@@ -49,7 +49,7 @@ public class UserBooks {
         this.completedDate = completedDate;
     }
 
-    public void setReadingStatus(String readingStatus) {
+    public void setReadingStatus(java.lang.String readingStatus) {
         this.readingStatus = readingStatus;
     }
 
@@ -61,7 +61,7 @@ public class UserBooks {
         return rating;
     }
 
-    public String getReadingStatus() {
+    public java.lang.String getReadingStatus() {
         return readingStatus;
     }
 

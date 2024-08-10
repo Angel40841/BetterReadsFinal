@@ -2,10 +2,10 @@ package com.example.betterreads.service.impl;
 
 import com.example.betterreads.model.dto.AddPostDTO;
 import com.example.betterreads.model.entites.PostEntity;
-import com.example.betterreads.model.entites.user.User;
 import com.example.betterreads.repositories.PostRepository;
 import com.example.betterreads.service.PostService;
 import org.modelmapper.ModelMapper;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
@@ -18,7 +18,6 @@ public class PostServiceImpl implements PostService {
     private final PostRepository postRepository;
     private final ModelMapper modelMapper;
 
-
     public PostServiceImpl(PostRepository postRepository, ModelMapper modelMapper) {
         this.postRepository = postRepository;
         this.modelMapper = modelMapper;
@@ -28,7 +27,13 @@ public class PostServiceImpl implements PostService {
 
     @Override
     public void addPost(AddPostDTO post) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (!(authentication instanceof AnonymousAuthenticationToken)) {
+            String currentUserName = authentication.getName();
+            post.setPostAuthor(currentUserName);
+        }
         postRepository.save(map(post));
+
     }
 
     @Override
@@ -53,12 +58,7 @@ public class PostServiceImpl implements PostService {
     }
 
     private PostEntity map(AddPostDTO postData) {
-        PostEntity mappedPost = modelMapper.map(postData, PostEntity.class);
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-
-
-
-        return mappedPost;
+        return modelMapper.map(postData, PostEntity.class);
     }
 
 }
