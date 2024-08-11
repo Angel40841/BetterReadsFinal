@@ -1,7 +1,6 @@
 package com.example.betterreads.service.impl;
 
 import com.example.betterreads.model.dto.UserRegisterDTO;
-
 import com.example.betterreads.model.entites.user.User;
 import com.example.betterreads.model.entites.user.UserRoles;
 import com.example.betterreads.repositories.UserRepository;

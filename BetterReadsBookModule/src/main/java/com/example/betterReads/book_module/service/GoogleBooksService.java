@@ -1,4 +1,4 @@
-package com.example.betterReads.book_module.service.impl;
+package com.example.betterReads.book_module.service;
 
 import com.example.betterReads.book_module.model.dto.GoogleBookResponseDTO;
 import org.slf4j.Logger;

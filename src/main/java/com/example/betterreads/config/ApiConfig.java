@@ -11,7 +11,6 @@ import org.springframework.jdbc.datasource.init.ResourceDatabasePopulator;
 import org.springframework.web.client.RestClient;
 
 import javax.sql.DataSource;
-import java.security.Principal;
 
 @Configuration
 public class ApiConfig {

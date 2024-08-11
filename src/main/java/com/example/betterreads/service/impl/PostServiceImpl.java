@@ -5,9 +5,6 @@ import com.example.betterreads.model.entites.PostEntity;
 import com.example.betterreads.repositories.PostRepository;
 import com.example.betterreads.service.PostService;
 import org.modelmapper.ModelMapper;
-import org.springframework.security.authentication.AnonymousAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
