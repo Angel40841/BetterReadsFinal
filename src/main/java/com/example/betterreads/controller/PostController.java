@@ -40,7 +40,7 @@ public class PostController {
 
 
     @PostMapping("/posts/add")
-    public String doPost(AddPostDTO postData, Model model) {
+    public String doPost(PostEntity postData, Model model) {
         model.addAttribute("postData", postData);
         postService.addPost(postData);
         return "redirect:/home";

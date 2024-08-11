@@ -3,6 +3,8 @@ package com.example.betterreads.model.entites;
 import com.example.betterreads.model.entites.user.User;
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "posts")
 public class PostEntity extends BaseEntity {
@@ -11,9 +13,11 @@ public class PostEntity extends BaseEntity {
     @Column(nullable = false)
     private java.lang.String title;
     @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false)
     private User user;
-
+    @ManyToOne
+    private Book book;
+    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
+    private List<Comment> comments;
 
     public PostEntity() {
     }
@@ -40,5 +44,25 @@ public class PostEntity extends BaseEntity {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public Book getBook() {
+        return book;
+    }
+
+    public void setBook(Book book) {
+        this.book = book;
+    }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
     }
 }

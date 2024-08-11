@@ -23,9 +23,8 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public void addPost(AddPostDTO post) {
-        post.setPostAuthor("Author");
-        postRepository.save(map(post));
+    public void addPost(PostEntity post) {
+        postRepository.save(post);
 
     }
 
@@ -50,8 +49,5 @@ public class PostServiceImpl implements PostService {
         return postRepository.findById(id);
     }
 
-    private PostEntity map(AddPostDTO postData) {
-        return modelMapper.map(postData, PostEntity.class);
-    }
 
 }

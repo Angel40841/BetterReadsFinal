@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface PostService {
-    void addPost(AddPostDTO post);
+    void addPost(PostEntity post);
     void deletePost(Long id);
 
     PostEntity getPostById(Long id);

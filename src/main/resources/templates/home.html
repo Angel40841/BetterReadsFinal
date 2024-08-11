@@ -5,6 +5,23 @@
 
 <head th:replace="~{layout::head}">
     <title>BetterReads</title>
+    <style>
+        .post {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
+        .post img {
+            max-width: 100%;
+            height: auto;
+        }
+        .comments {
+            margin-top: 15px;
+            padding-left: 15px;
+            border-left: 2px solid #ddd;
+        }
+    </style>
 </head>
 <body>
 <header th:replace="~{layout::header}"></header>
@@ -22,44 +39,95 @@
             </li>
         </ul>
     </section>
-    <section id="post-section">
-        <div class="mt-5">
-            <form th:action="@{/post/all}"
-                  th:method="POST"
-                  th:object="${postData}">
-                <h3 th:text="#{homepage.post.header}">What are we reading?</h3>
-                <ul>
-                    <li class="d-inline navbar-nav mr-auto col-12 shadow-lg"
-                        th:each="post : ${postData}">
-                    <a th:href="@{/posts/{id}(id=${post.id})}">
-                        th:text="${post.postContent}">
-                        </a>
-                    </li>
-                </ul>
-            </form>
-            <div class="form-group">
-                <h3 th:text="#{homepage.post.section}">Tell us what are you reading now!</h3>
-                <label for="title"></label>
-                <form class="d-block border border-dark-subtle rounded-3 font-monospace shadow-sm"
-                      th:action="@{/posts/add}"
-                      th:method="post"
-                      th:object="${postData}">
-                    <textarea id="title" name="title" class="form-control text-black" rows="1" required th:placeholder="#{post.title.placeholder}"></textarea>
-                    <label for="postContent"></label>
-                    <textarea
+    <section class="container">
+        <h2>Recent Posts</h2>
 
-                            id="postContent"
-                            name="postContent"
-                            class="form-control"
-                            rows="2" required
-                            th:placeholder="#{post.content.placeholder}"></textarea>
-                    <div class="d-flex justify-content-center mt-2">
-                        <button class="btn btn-blue-100 btn-block w-50 font-monospace" type="submit" th:text="#{homepage.submit.button}">Submit</button>
+        <!-- Posts Section -->
+        <div th:each="post : ${posts}">
+            <div class="post">
+                <h4 th:text="${post.user.username} + ' shared a book:'"></h4>
+                <div>
+                    <img th:src="@{${post.book.getThumbnail()}}" alt="Book Cover" class="img-thumbnail" style="width:150px;">
+                    <p th:text="${post.getPostContent()}">Post content goes here</p>
+                </div>
+
+                <!-- Comments Section -->
+                <div class="comments">
+                    <h5>Comments</h5>
+                    <div th:each="comment : ${post.comments}">
+                        <p><strong th:text="${comment.user.username}">Username</strong>: <span th:text="${comment.content}">Comment content</span></p>
                     </div>
+                </div>
+
+                <!-- Add Comment Form -->
+                <form th:action="@{/addComment}" method="POST">
+                    <input type="hidden" th:value="${post.id}" name="postId"/>
+                    <input type="hidden" th:value="${loginId}" name="userId"/>
+                    <div class="form-group">
+                        <textarea class="form-control" name="content" placeholder="Add a comment..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-sm">Comment</button>
                 </form>
             </div>
         </div>
+
+        <!-- Add Post Section -->
+        <section id="add-post">
+            <h3>Add a Post</h3>
+            <form th:action="@{/addPost}" method="POST">
+                <input type="hidden" th:value="${loginId}" name="userId"/>
+                <div class="form-group">
+                    <label for="book">Book:</label>
+                    <select name="bookId" class="form-control" required>
+                        <option th:each="book : ${books}" th:value="${book.id}" th:text="${book.title}">Select a book</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="contents">Content:</label>
+                    <textarea class="form-control" name="contents" placeholder="Share your thoughts..." required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Post</button>
+            </form>
+        </section>
     </section>
+<!--    <section id="post-section">-->
+<!--        <div class="mt-5">-->
+<!--            <form th:action="@{/post/all}"-->
+<!--                  th:method="POST"-->
+<!--                  th:object="${postData}">-->
+<!--                <h3 th:text="#{homepage.post.header}">What are we reading?</h3>-->
+<!--                <ul>-->
+<!--                    <li class="d-inline navbar-nav mr-auto col-12 shadow-lg"-->
+<!--                        th:each="post : ${postData}">-->
+<!--                    <a th:href="@{/posts/{id}(id=${post.id})}">-->
+<!--                        th:text="${post.postContent}">-->
+<!--                        </a>-->
+<!--                    </li>-->
+<!--                </ul>-->
+<!--            </form>-->
+<!--            <div class="form-group">-->
+<!--                <h3 th:text="#{homepage.post.section}">Tell us what are you reading now!</h3>-->
+<!--                <label for="title"></label>-->
+<!--                <form class="d-block border border-dark-subtle rounded-3 font-monospace shadow-sm"-->
+<!--                      th:action="@{/posts/add}"-->
+<!--                      th:method="post"-->
+<!--                      th:object="${postData}">-->
+<!--                    <textarea id="title" name="title" class="form-control text-black" rows="1" required th:placeholder="#{post.title.placeholder}"></textarea>-->
+<!--                    <label for="postContent"></label>-->
+<!--                    <textarea-->
+
+<!--                            id="postContent"-->
+<!--                            name="postContent"-->
+<!--                            class="form-control"-->
+<!--                            rows="2" required-->
+<!--                            th:placeholder="#{post.content.placeholder}"></textarea>-->
+<!--                    <div class="d-flex justify-content-center mt-2">-->
+<!--                        <button class="btn btn-blue-100 btn-block w-50 font-monospace" type="submit" th:text="#{homepage.submit.button}">Submit</button>-->
+<!--                    </div>-->
+<!--                </form>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </section>-->
 </main>
 </body>
 
