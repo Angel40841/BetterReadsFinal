@@ -6,6 +6,7 @@ import com.example.betterreads.model.entites.Book;
 import com.example.betterreads.repositories.BookRepository;
 import com.example.betterreads.service.BookService;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
@@ -19,7 +20,7 @@ public class BookServiceImpl implements BookService {
     private final RestClient restClient;
     private final BookModuleApiConfig bookModuleApiConfig;
 
-    public BookServiceImpl(BookRepository bookRepository, ModelMapper modelMapper, RestClient restClient, BookModuleApiConfig bookModuleApiConfig) {
+    public BookServiceImpl(BookRepository bookRepository, ModelMapper modelMapper, @Qualifier("googleSearchBooks") RestClient restClient, BookModuleApiConfig bookModuleApiConfig) {
         this.bookRepository = bookRepository;
         this.modelMapper = modelMapper;
         this.restClient = restClient;

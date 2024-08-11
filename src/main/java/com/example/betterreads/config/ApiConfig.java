@@ -19,13 +19,13 @@ public class ApiConfig {
         return new ModelMapper();
     }
 
-    @Bean
-    public RestClient restClient(BookModuleApiConfig config) {
-        return RestClient.builder()
-                .baseUrl(config.getBaseUrl())
-                .defaultHeader("Content-Type", MediaType.APPLICATION_JSON_VALUE)
-                .build();
-    }
+//    @Bean
+//    public RestClient restClient(BookModuleApiConfig config) {
+//        return RestClient.builder()
+//                .baseUrl(config.getBaseUrl())
+//                .defaultHeader("Content-Type", MediaType.APPLICATION_JSON_VALUE)
+//                .build();
+//    }
 
     @Bean
     public DataSourceInitializer dataSourceInitializer(
