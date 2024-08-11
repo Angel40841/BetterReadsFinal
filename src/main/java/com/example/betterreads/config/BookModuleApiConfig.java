@@ -15,4 +15,6 @@ public class BookModuleApiConfig {
     public void setBaseUrl(String baseUrl) {
         this.baseUrl = baseUrl;
     }
+
+
 }

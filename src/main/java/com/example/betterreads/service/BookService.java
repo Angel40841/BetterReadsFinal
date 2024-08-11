@@ -9,7 +9,7 @@ public interface BookService {
     void addBook(AddBookDTO book);
     void removeBook(Long id);
 
-    String searchBooks(String query);
+    AddBookDTO searchBooks(String query);
 
     List<Book> getAllBooks();
 }

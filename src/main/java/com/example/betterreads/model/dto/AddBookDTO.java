@@ -8,12 +8,28 @@ public class AddBookDTO {
     @NotBlank
     private String authors;
     @NotBlank
-    private Integer publishedDate;
-
+    private String publishedDate;
+    private Integer pageCount;
     private String description;
     private String thumbnail;
 
     public AddBookDTO() {
+    }
+
+    public void setPublishedDate(String publishedDate) {
+        this.publishedDate = publishedDate;
+    }
+
+    public Integer getPageCount() {
+        return pageCount;
+    }
+
+    public void setPageCount(Integer pageCount) {
+        this.pageCount = pageCount;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getThumbnail() {
@@ -36,12 +52,8 @@ public class AddBookDTO {
         this.authors = authors;
     }
 
-    public Integer getPublishedDate() {
+    public String getPublishedDate() {
         return publishedDate;
-    }
-
-    public void setPublishedDate(Integer publishedDate) {
-        this.publishedDate = publishedDate;
     }
 
     public void setThumbnail(String thumbnail) {
