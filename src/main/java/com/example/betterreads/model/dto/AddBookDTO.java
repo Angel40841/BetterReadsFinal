@@ -6,7 +6,7 @@ public class AddBookDTO {
     @NotBlank
     private String title;
     @NotBlank
-    private String authors;
+    private String author;
     @NotBlank
     private String publishedDate;
     private Integer pageCount;
@@ -44,12 +44,12 @@ public class AddBookDTO {
         this.title = title;
     }
 
-    public String getAuthors() {
-        return authors;
+    public String getAuthor() {
+        return author;
     }
 
-    public void setAuthors(String author) {
-        this.authors = authors;
+    public void setAuthor(String author) {
+        this.author = author;
     }
 
     public String getPublishedDate() {

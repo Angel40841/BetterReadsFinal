@@ -55,6 +55,12 @@ public class BookServiceImpl implements BookService {
 
     private Book map(AddBookDTO bookData) {
 
-        return modelMapper.map(bookData, Book.class);
+        Book map = modelMapper.map(bookData, Book.class);
+        map.setAuthor(bookData.getAuthor());
+        map.setTitle(bookData.getTitle());
+        map.setPublishedDate(bookData.getPublishedDate());
+        map.setDescription(bookData.getDescription());
+        map.setThumbnail(bookData.getThumbnail());
+        return map;
     }
 }

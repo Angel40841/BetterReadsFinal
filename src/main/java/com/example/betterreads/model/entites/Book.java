@@ -5,13 +5,13 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "books_main")
+@Table(name = "books")
 public class Book extends BaseEntity{
 
     @Column
     private String title;
     @Column
-    private String authors;
+    private String author;
     @Column
     private String publishedDate;
     @Column(columnDefinition = "TEXT")
@@ -30,12 +30,12 @@ public class Book extends BaseEntity{
         this.title = title;
     }
 
-    public String getAuthors() {
-        return authors;
+    public String getAuthor() {
+        return author;
     }
 
-    public void setAuthors(String authors) {
-        this.authors = authors;
+    public void setAuthor(String authors) {
+        this.author = authors;
     }
 
     public String getPublishedDate() {
