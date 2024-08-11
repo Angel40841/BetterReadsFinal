@@ -1,6 +1,6 @@
 package com.example.betterReads.book_module.controller;
 
-import com.example.betterReads.book_module.model.dto.GoogleBookResponseDTO;
+import com.example.betterReads.book_module.model.dto.GoogleBookResponse;
 import com.example.betterReads.book_module.service.GoogleBooksService;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,8 +17,8 @@ public class GoogleBooksController {
     public GoogleBooksController(GoogleBooksService googleBooksService) {
         this.googleBooksService = googleBooksService;
     }
-    @GetMapping("/api/books/search")
-    public GoogleBookResponseDTO searchBooks(@RequestParam String query) {
+    @GetMapping("/search")
+    public GoogleBookResponse searchBooks(@RequestParam String query) {
         return googleBooksService.searchBooks(query);
     }
    

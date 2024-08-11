@@ -1,6 +1,6 @@
 package com.example.betterReads.book_module.service;
 
-import com.example.betterReads.book_module.model.dto.GoogleBookResponseDTO;
+import com.example.betterReads.book_module.model.dto.GoogleBookResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -14,7 +14,7 @@ public class GoogleBooksService {
     private static final String API_KEY = "AIzaSyAjNgkPT7yQTIlu6ItY9EFym7-VGN5JoBM";
     private static final Logger LOGGER = LoggerFactory.getLogger(GoogleBooksService.class);
 
-    public GoogleBookResponseDTO searchBooks(String query) {
+    public GoogleBookResponse searchBooks(String query) {
 
         RestTemplate restTemplate = new RestTemplate();
 
@@ -26,7 +26,7 @@ public class GoogleBooksService {
 
         LOGGER.info("Request URL: {}", uri);
 
-        GoogleBookResponseDTO forObject = restTemplate.getForObject(uri, GoogleBookResponseDTO.class);
+        GoogleBookResponse forObject = restTemplate.getForObject(uri, GoogleBookResponse.class);
 
         LOGGER.info("Response: {}", forObject);
         return forObject;

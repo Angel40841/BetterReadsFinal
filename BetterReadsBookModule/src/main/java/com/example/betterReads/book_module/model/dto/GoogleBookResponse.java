@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class GoogleBookResponseDTO {
+public class GoogleBookResponse {
     private List<Volume> items;
 
     public List<Volume> getItems() {
@@ -43,9 +43,27 @@ public class GoogleBookResponseDTO {
     public static class VolumeInfo {
         private String title;
         private List<String> authors;
+        private String publishedDate;
         private String description;
         private ImageLinks imageLinks;
+        private int pageCount;
 
+
+        public String getPublishedDate() {
+            return publishedDate;
+        }
+
+        public void setPublishedDate(String publishedDate) {
+            this.publishedDate = publishedDate;
+        }
+
+        public int getPageCount() {
+            return pageCount;
+        }
+
+        public void setPageCount(int pageCount) {
+            this.pageCount = pageCount;
+        }
 
         public ImageLinks getImageLinks() {
             return imageLinks;
