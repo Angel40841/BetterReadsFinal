@@ -52,4 +52,13 @@ public class BookController {
         model.addAttribute("book", book);
         return "book-details";
     }
+    @GetMapping("/delete/{id}")
+    public String delete(@PathVariable("id")Long id){
+        return "redirect:/home";
+    }
+    @PostMapping("/delete/{id}")
+    public String deleteBook(@PathVariable("id") Long id){
+        bookService.removeBook(id);
+        return "redirect:/home";
+    }
 }

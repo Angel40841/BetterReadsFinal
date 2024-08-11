@@ -42,7 +42,7 @@ public class GoogleBookResponse {
     @JsonIgnoreProperties(ignoreUnknown = true)
     public static class VolumeInfo {
         private String title;
-        private List<String> authors;
+        private String authors;
         private String publishedDate;
         private String description;
         private ImageLinks imageLinks;
@@ -81,11 +81,11 @@ public class GoogleBookResponse {
             this.title = title;
         }
 
-        public List<String> getAuthors() {
+        public String getAuthors() {
             return authors;
         }
 
-        public void setAuthors(List<String> authors) {
+        public void setAuthors(String authors) {
             this.authors = authors;
         }
 

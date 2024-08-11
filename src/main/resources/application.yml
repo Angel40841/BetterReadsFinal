@@ -8,7 +8,7 @@ spring:
         name: BetterReads
     datasource:
         driverClassName: com.mysql.cj.jdbc.Driver
-        password: 1234
+        password: Password123#@!
         url: jdbc:mysql://localhost:3306/betterReads?createDatabaseIfNotExist=true&allowPublicKeyRetrieval=true&useSSL=false&sessionVariables=sql_mode='NO_ENGINE_SUBSTITUTION'&jdbcCompliantTruncation=false
         username: root
     jpa:

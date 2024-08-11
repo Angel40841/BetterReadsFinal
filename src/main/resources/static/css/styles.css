@@ -74,17 +74,19 @@ body {
     background: #000;
 }
 
-.main-header.fixed-nav .navbar-brand > img:last-of-type {
+.main-header.fixed-nav > img:last-of-type {
     display: block;
 }
 
-.main-header.fixed-nav .navbar-brand > img:first-of-type {
+.main-header.fixed-nav > img:first-of-type {
     display: none;
 }
 .navbar-brand {
+    ;
+    margin-left: -100px;
     color: #000000;
 }
-.main-header .navbar-brand img {
+.main-header  {
     max-width: 40px;
     animation: fadeInLeft 0.4s both 0.4s;
 }

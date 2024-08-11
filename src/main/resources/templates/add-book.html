@@ -14,38 +14,32 @@
                 th:action="@{/add-book}"
         th:object="${bookData}">
             <div class="form-group col-auto">
-                <label for="title">Title</label>
+                <label for="title"></label>
                 <input
                         th:field="*{title}"
                         type="text"
                         class="form-control"
                         id="title"
-                        name="title" required>
+                        name="title" required
+                placeholder="Title">
             </div>
             <div class="form-group col-auto">
-                <label for="author">Author</label>
+                <label for="authors"></label>
                 <input
                         th:field="*{authors}"
                         type="text"
                         class="form-control"
-                        id="author"
-                        name="author" required>
+                        id="authors"
+                        name="authors" required placeholder="Author">
             </div>
             <div class="form-group col-auto">
-                <label for="releasedInYear">Year of release</label>
+                <label for="releasedInYear"></label>
                 <textarea
-                        th:field="*{publishedDate}"
-                        class="form-control"
-                        id="releasedInYear"
-                        name="releasedInYear" required></textarea>
+                        th:field="*{publishedDate}" class="form-control rows=1" id="releasedInYear" name="releasedInYear" placeholder="Year of release" required></textarea>
             </div>
             <div class="form-group col-auto">
-                <label for="coverImageUrl">Cover image URL</label>
-                <textarea
-                        th:field="*{thumbnail}"
-                        class="form-control"
-                        id="coverImageUrl"
-                        name="coverImageUrl"></textarea>
+                <label for="coverImageUrl"></label>
+                <textarea th:field="*{thumbnail}" class="form-control" id="coverImageUrl" name="coverImageUrl" placeholder="Cover image URL"></textarea>
             </div>
             <div class="d-flex justify-content-center mt-4">
             <button type="submit"
