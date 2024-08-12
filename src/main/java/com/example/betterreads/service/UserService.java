@@ -7,7 +7,7 @@ import java.util.Optional;
 
 public interface UserService {
     void register(UserRegisterDTO registerData);
-    void delete(Long id);
+    void deleteUser(Long id);
     String getCurrentUsername();
     Optional<User> findById(Long userId);
     Optional<User> findByUsername(String username);

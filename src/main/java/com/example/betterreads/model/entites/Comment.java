@@ -39,4 +39,5 @@ public class Comment extends BaseEntity {
     public void setPost(PostEntity post) {
         this.post = post;
     }
+
 }

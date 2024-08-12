@@ -33,7 +33,7 @@
             <li class="d-inline navbar-nav mr-auto col-12 shadow-lg"
                 th:each="book : ${books}">
                 <a th:href="@{/books/{id}(id=${book.id})}">
-                    <img class="wh-100" style="width: 150px; height: 200px; background-color: rgba(0,0,255,0.1);"
+                    <img class="wh-100"
                          th:src="@{${book.thumbnail}}" alt="Cover Image"/>
                 </a>
             </li>
@@ -47,7 +47,7 @@
             <div class="post">
                 <h4 th:text="${post.user.username} + ' shared a book:'"></h4>
                 <div>
-                    <img th:src="@{${post.book.getThumbnail()}}" alt="Book Cover" class="img-thumbnail" style="width:150px;">
+                    <img th:src="@{${post.book.getThumbnail()}}" alt="Book Cover" class="img-thumbnail" >
                     <p th:text="${post.getPostContent()}">Post content goes here</p>
                 </div>
 
@@ -62,7 +62,7 @@
                 <!-- Add Comment Form -->
                 <form th:action="@{/addComment}" method="POST">
                     <input type="hidden" th:value="${post.id}" name="postId"/>
-                    <input type="hidden" th:value="${loginId}" name="loginId" value="123"/>
+                    <input type="hidden" th:value="${loginId}" name="userId"/>
                     <div class="form-group">
                         <textarea class="form-control" name="content" placeholder="Add a comment..." required></textarea>
                     </div>
@@ -75,7 +75,7 @@
         <section id="add-post">
             <h3>Add a Post</h3>
             <form th:action="@{/posts/add}" method="POST">
-                <input type="hidden" th:value="${loginId}" name="loginId"/>
+                <input type="hidden" th:value="${loginId}" name="UserId"/>
                 <div class="form-group">
                     <label>
                         <select name="bookId" class="form-control" required>

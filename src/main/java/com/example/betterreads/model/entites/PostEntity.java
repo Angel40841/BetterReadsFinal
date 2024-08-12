@@ -3,6 +3,7 @@ package com.example.betterreads.model.entites;
 import com.example.betterreads.model.entites.user.User;
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -10,8 +11,6 @@ import java.util.List;
 public class PostEntity extends BaseEntity {
     @Column(name = "post_content", nullable = false, columnDefinition = "TEXT")
     private java.lang.String postContent;
-    @Column(nullable = false)
-    private java.lang.String title;
     @ManyToOne
     private User user;
     @ManyToOne
@@ -20,26 +19,15 @@ public class PostEntity extends BaseEntity {
     private List<Comment> comments;
 
     public PostEntity() {
+        this.comments = new ArrayList<>();
     }
 
     public String getPostContent() {
         return postContent;
     }
 
-    public User getPostAuthor() {
-        return user;
-    }
-
-    public java.lang.String getTitle() {
-        return title;
-    }
-
     public void setPostContent(String postContent) {
         this.postContent = postContent;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
     }
 
     public void setUser(User user) {
@@ -60,9 +48,5 @@ public class PostEntity extends BaseEntity {
 
     public List<Comment> getComments() {
         return comments;
-    }
-
-    public void setComments(List<Comment> comments) {
-        this.comments = comments;
     }
 }

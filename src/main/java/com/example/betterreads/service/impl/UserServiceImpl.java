@@ -8,6 +8,7 @@ import com.example.betterreads.service.UserService;
 import com.example.betterreads.service.exception.DatabaseException;
 import jakarta.transaction.Transactional;
 import org.modelmapper.ModelMapper;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -40,7 +41,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void delete(Long id) {
+    public void deleteUser(Long id) {
         userRepository.deleteById(id);
     }
 
@@ -75,6 +76,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Optional<User> findByUsername(String username) {
-        return userRepository.findByUsername(username);
+        Authentication authentication =SecurityContextHolder.getContext().getAuthentication();
+        return userRepository.findByUsername(authentication.getName());
     }
 }
