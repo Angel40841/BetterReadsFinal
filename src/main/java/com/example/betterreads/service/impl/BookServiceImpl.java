@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class BookServiceImpl implements BookService {
@@ -46,6 +47,11 @@ public class BookServiceImpl implements BookService {
                 .accept(MediaType.APPLICATION_JSON)
                 .retrieve()
                 .body(AddBookDTO.class);
+    }
+
+    @Override
+    public Optional<Book> findById(Long bookId) {
+        return bookRepository.findById(bookId);
     }
 
     @Override

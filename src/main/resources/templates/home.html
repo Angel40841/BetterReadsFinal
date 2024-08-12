@@ -62,7 +62,7 @@
                 <!-- Add Comment Form -->
                 <form th:action="@{/addComment}" method="POST">
                     <input type="hidden" th:value="${post.id}" name="postId"/>
-                    <input type="hidden" th:value="${loginId}" name="userId"/>
+                    <input type="hidden" th:value="${loginId}" name="loginId" value="123"/>
                     <div class="form-group">
                         <textarea class="form-control" name="content" placeholder="Add a comment..." required></textarea>
                     </div>
@@ -74,17 +74,19 @@
         <!-- Add Post Section -->
         <section id="add-post">
             <h3>Add a Post</h3>
-            <form th:action="@{/addPost}" method="POST">
-                <input type="hidden" th:value="${loginId}" name="userId"/>
+            <form th:action="@{/posts/add}" method="POST">
+                <input type="hidden" th:value="${loginId}" name="loginId"/>
                 <div class="form-group">
-                    <label for="book">Book:</label>
-                    <select name="bookId" class="form-control" required>
-                        <option th:each="book : ${books}" th:value="${book.id}" th:text="${book.title}">Select a book</option>
-                    </select>
+                    <label>
+                        <select name="bookId" class="form-control" required>
+                            <option th:each="book : ${books}" th:value="${book.id}" th:text="${book.title}">Select a book</option>
+                        </select>
+                    </label>
                 </div>
                 <div class="form-group">
-                    <label for="content">Content:</label>
-                    <textarea class="form-control" name="content" placeholder="Share your thoughts..." required></textarea>
+                    <label>
+                        <textarea class="form-control" name="content" placeholder="Share your thoughts..." required></textarea>
+                    </label>
                 </div>
                 <button type="submit" class="btn btn-primary">Post</button>
             </form>

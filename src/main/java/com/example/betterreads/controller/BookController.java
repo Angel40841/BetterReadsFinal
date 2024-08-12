@@ -4,6 +4,7 @@ import com.example.betterreads.model.dto.AddBookDTO;
 import com.example.betterreads.model.entites.Book;
 import com.example.betterreads.repositories.BookRepository;
 import com.example.betterreads.service.BookService;
+import com.example.betterreads.service.UserService;
 import com.example.betterreads.service.exception.ObjectNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -15,10 +16,13 @@ import org.springframework.web.servlet.ModelAndView;
 public class BookController {
     private final BookService bookService;
     private final BookRepository bookRepository;
+    private final UserService userService;
 
-    public BookController(BookService bookService, BookRepository bookRepository) {
+
+    public BookController(BookService bookService, BookRepository bookRepository, UserService userService) {
         this.bookService = bookService;
         this.bookRepository = bookRepository;
+        this.userService = userService;
     }
 
     @ModelAttribute("bookData")
@@ -39,7 +43,7 @@ public class BookController {
 
     @ResponseStatus(code = HttpStatus.NOT_FOUND)
     @ExceptionHandler(ObjectNotFoundException.class)
-    public ModelAndView handleObjectNotFound(ObjectNotFoundException onfe){
+    public ModelAndView handleObjectNotFound(ObjectNotFoundException onfe) {
         ModelAndView mav = new ModelAndView("book-not-found");
         mav.addObject("bookId", onfe.getId());
 
@@ -49,15 +53,20 @@ public class BookController {
     @GetMapping("/books/{id}")
     public String getBookDetails(@PathVariable("id") Long id, Model model) {
         Book book = bookRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid book Id:" + id));
+        String username = userService.getCurrentUsername();
+        userService.findByUsername(username).ifPresent(user -> model.addAttribute("loginId", user.getId()));
         model.addAttribute("book", book);
+
         return "book-details";
     }
+
     @GetMapping("/delete/{id}")
-    public String delete(@PathVariable("id")Long id){
+    public String delete(@PathVariable("id") Long id) {
         return "redirect:/home";
     }
+
     @PostMapping("/delete/{id}")
-    public String deleteBook(@PathVariable("id") Long id){
+    public String deleteBook(@PathVariable("id") Long id) {
         bookService.removeBook(id);
         return "redirect:/home";
     }

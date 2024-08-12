@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 public class CommentServiceImpl implements CommentService {
     private final CommentRepository commentRepository;
 
+
     public CommentServiceImpl(CommentRepository commentRepository) {
         this.commentRepository = commentRepository;
     }

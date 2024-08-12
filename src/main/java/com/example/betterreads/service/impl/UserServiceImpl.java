@@ -8,10 +8,13 @@ import com.example.betterreads.service.UserService;
 import com.example.betterreads.service.exception.DatabaseException;
 import jakarta.transaction.Transactional;
 import org.modelmapper.ModelMapper;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
+import java.util.Optional;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -54,5 +57,24 @@ public class UserServiceImpl implements UserService {
             mappedUser.setRole(UserRoles.USER);
         }
         return mappedUser;
+    }
+    public String getCurrentUsername() {
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        if (principal instanceof UserDetails) {
+            return ((UserDetails) principal).getUsername();
+        } else {
+            return principal.toString();
+        }
+    }
+
+    @Override
+    public Optional<User> findById(Long userId) {
+        return userRepository.findById(userId);
+    }
+
+    @Override
+    public Optional<User> findByUsername(String username) {
+        return userRepository.findByUsername(username);
     }
 }
