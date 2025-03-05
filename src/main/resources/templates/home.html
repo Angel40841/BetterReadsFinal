@@ -5,7 +5,7 @@
 
 <head th:replace="~{layout::head}">
     <title>BetterReads</title>
-    <style>
+    <!-- <style>
         .post {
             border: 1px solid #ddd;
             padding: 15px;
@@ -21,7 +21,7 @@
             padding-left: 15px;
             border-left: 2px solid #ddd;
         }
-    </style>
+    </style> -->
 </head>
 <body>
 <header th:replace="~{layout::header}"></header>
@@ -34,7 +34,7 @@
                 th:each="book : ${books}">
                 <a th:href="@{/books/{id}(id=${book.id})}">
                     <img class="wh-100"
-                         th:src="@{${book.thumbnail}}" alt="Cover Image"/>
+                         th:src="@{$book.thumbnail}" alt="Cover Image"/>
                 </a>
             </li>
         </ul>

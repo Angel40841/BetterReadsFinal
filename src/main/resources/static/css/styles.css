@@ -1,5 +1,5 @@
 
-@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/css?family=Poiret One');
 
 body {
     background: url("/images/background.jpg");
@@ -7,13 +7,34 @@ body {
     height: 100vh;
     margin: 0;
     padding: 0;
-    font-family: Inter, sans-serif;
+    font-family: Poiret One, sans-serif;
 }
 #recent-books{
    font-palette: light;
 }
+#mainMenu > ul{
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    background-color: #00aefa;
+    overflow: hidden;
+
+}
+#mainMenu > ul > li {
+    float: left;
+}
+#mainMenu > ul > li > a{
+    display: flex;
+    color: #f8f353;
+    text-align: center;
+    padding: 16px;
+    text-decoration: none;
+}
+#mainMenu > ul > li > a:hover{
+    background-color: rgb(23, 92, 147);
+}
 /* main-header start */
-[data-target="#mainMenu"] {
+/* [data-target="#mainMenu"] {
     position: relative;
     z-index: 999;
 }
@@ -91,22 +112,25 @@ body {
     animation: fadeInLeft 0.4s both 0.4s;
 }
 /* main-header end */
-@media (max-width: 991px) {
-    /*header starts*/
-    .navbar-toggler {
-        margin: 0;
-        padding: 0;
-        width: 40px;
-        height: 40px;
-        position: absolute;
-        top: 25px;
-        right: 0;
-        border: none;
-        border-radius: 0;
-        outline: none !important;
-    }
+/*@media (max-width: 991px) {*/
+/*    !*header starts*!*/
+/*    .navbar-toggler {*/
+/*        margin: 0;*/
+/*        padding: 0;*/
+/*        width: 40px;*/
+/*        height: 40px;*/
+/*        position: absolute;*/
+/*        top: 25px;*/
+/*        right: 0;*/
+/*        border: none;*/
+/*        border-radius: 0;*/
+/*        outline: none !important;*/
+/*    }*/
 
-    /**/
+/*     *!*/
 
 
+#nav-item dropdown{
+    padding: 5px;;
+}
 }
